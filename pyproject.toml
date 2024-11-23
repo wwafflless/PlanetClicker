@@ -1,0 +1,31 @@
+[project]
+name = "planet-clicker"
+version = "0.0.1"
+description = "Clicker game."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  {name = "Ben Kanter"},
+  {name = "Adam Neeley"}
+]
+
+dependencies = [
+  "pygame"
+]
+
+[tools.pyright]
+pythonpath = ["src"]
+include = ["src"]
+exclude = ["**/__pycache__", "**/tests/*"]
+
+# [project.optional-dependencies]
+# test = [
+#   "pytest < 5.0.0",
+#   "pytest-cov[all]"
+# ]
+
+[project.urls]
+repository = "https://github.com/wwafflless/PlanetClicker"
+
+# [project.scripts]
+# main = "planet-clicker:main"
