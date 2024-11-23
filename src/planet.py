@@ -1,15 +1,13 @@
 from __future__ import annotations
 import pygame
 import math
-from pprint import pp
-from pygame import Vector2
-from font import pixel_font
 
 
 class Planet(pygame.sprite.Sprite):
-    def __init__(self, radius, orbit_radius, speed):
+    def __init__(self, name, radius, orbit_radius, speed):
         super().__init__()
-        self.image = pygame.image.load("assets/earth.png")
+        self.name = name
+        self.image = pygame.image.load(f"assets/{name}.png")
         self.image = pygame.transform.scale(self.image, (radius * 2, radius * 2))
         self.rect = self.image.get_rect()
         self.angle = 0

@@ -1,1 +1,2 @@
 * [ ] use spritesheet for planets
+* [ ] convert planets to pixel art
