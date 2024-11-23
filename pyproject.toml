@@ -1,5 +1,5 @@
 [project]
-name = "planet-clicker"
+name = "planet"
 version = "0.0.1"
 description = "Clicker game."
 readme = "README.md"
@@ -13,11 +13,6 @@ dependencies = [
   "pygame"
 ]
 
-[tools.pyright]
-pythonpath = ["src"]
-include = ["src"]
-exclude = ["**/__pycache__", "**/tests/*"]
-
 # [project.optional-dependencies]
 # test = [
 #   "pytest < 5.0.0",
@@ -27,5 +22,14 @@ exclude = ["**/__pycache__", "**/tests/*"]
 [project.urls]
 repository = "https://github.com/wwafflless/PlanetClicker"
 
-# [project.scripts]
-# main = "planet-clicker:main"
+[tools.pyright]
+pythonpath = ["src"]
+include = ["src"]
+exclude = ["**/__pycache__", "**/tests/*"]
+executionEnvironments = [
+  { root = "." },
+  # { root = "tests" },
+]
+
+[project.scripts]
+main = "main"
