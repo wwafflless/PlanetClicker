@@ -1,30 +1,132 @@
-welcome_message = "Hello there, beautiful weather today!"
+################################
+# ui
+################################
 
-[planets.earth]
-radius = 20
-orbit_radius = 0
-speed = 0
-[planets.moon]
-radius = 3
-orbit_radius = 30
-speed = 5
-[planets.mercury]
-radius = 7
-orbit_radius = 50
-speed = 3
-[planets.venus]
-radius = 10
-orbit_radius = 80
-speed = 2
-[planets.mars]
-radius = 12
-orbit_radius = 120
-speed = 1
-[planets.jupiter]
-radius = 40
-orbit_radius = 200
-speed = 0.2
-[planets.saturn]
-radius = 50
-orbit_radius = 330
-speed = 0.1
+[ui]
+    welcome_message = "Hello there, beautiful weather today!"
+
+################################
+# info
+################################
+
+[info.triplicity]
+    cardinal = "initial"
+    fixed = "stable"
+    mutable = "changing"
+
+[info.dignity]
+    rules = "super powerful"
+    exalted = "powerful"
+    detriment = "weak"
+    fall = "super weak"
+
+################################
+# planets
+################################
+
+[planet.earth]
+    color = "brown"
+    radius = 20
+    orbit_radius = 0
+    speed = 0
+[planet.moon]
+    color = "silver"
+    radius = 3
+    orbit_radius = 30
+    speed = 5
+[planet.mercury]
+    color = "orange"
+    radius = 7
+    orbit_radius = 50
+    speed = 3
+[planet.venus]
+    color = "green"
+    radius = 10
+    orbit_radius = 80
+    speed = 2
+[planet.sun]
+    color = "gold"
+    radius = 40
+    orbit_radius = 100
+    speed = 2
+[planet.mars]
+    color = "red"
+    radius = 12
+    orbit_radius = 120
+    speed = 1
+[planet.jupiter]
+    color = "blue"
+    radius = 40
+    orbit_radius = 200
+    speed = 0.2
+[planet.saturn]
+    color = "black"
+    radius = 50
+    orbit_radius = 330
+    speed = 0.1
+[planet.uranus]
+    color = "violet"
+[planet.neptune]
+    color = "white"
+
+################################
+# zodiac
+################################
+
+[zodiac.aries]
+    element = "fire"
+    triplicity = "cardinal"
+    ruler = "mars"
+    exalted = "sun"
+    detriment = "venus"
+    fall = "saturn"
+
+[zodiac.taurus]
+    triplicity = "fixed"
+    element = "air"
+    ruler = "venus"
+    exalted = "moon"
+    detriment = "mars"
+    fall = "none"
+
+[zodiac.gemini]
+    triplicity = "mutable"
+    element = "water"
+    ruler = "mercury"
+    exalted = "none" # or north-node
+    detriment = "jupiter"
+    fall = "none" # or south-node
+
+[zodiac.cancer]
+    triplicity = "cardinal"
+    ruler = "moon"
+    exalted = "jupiter"
+    detriment = "saturn"
+    fall = "mars"
+
+[zodiac.leo]
+    triplicity = "fixed"
+    ruler = "sun"
+    exalted = "none"
+    detriment = "saturn"
+    fall = "none"
+
+[zodiac.virgo]
+    triplicity = "mutable"
+    ruler = "mercury"
+    exalted = "mercury"
+    detriment = "jupiter"
+    fall = "venus"
+
+[zodiac.libra]
+    triplicity = "cardinal"
+    ruler = "venus"
+    exalted = "saturn"
+    detriment = "mars"
+    fall = "sun"
+
+# [zodiac.scorpio]
+# [zodiac.sagittarius]
+# [zodiac.capricorn]
+# [zodiac.aquarius]
+# [zodiac.pisces]

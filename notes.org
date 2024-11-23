@@ -1,0 +1,16 @@
+#+title: Notes
+* dignity
+| sign        | rules   | exaltation | detriment | fall    |
+|-------------+---------+------------+-----------+---------|
+| aries       | mars    | sun        | venus     | saturn  |
+| taurus      | venus   | moon       | mars      | none    |
+| gemini      | mercury | none       | jupiter   | none    |
+| cancer      | moon    | jupiter    | saturn    | mars    |
+| leo         | sun     | none       | saturn    | none    |
+| virgo       | mercury | mercury    | jupiter   | venus   |
+| libra       | venus   | saturn     | mars      | sun     |
+| scorpio     | mars    | none       | venus     | moon    |
+| sagittarius | jupiter | none       | mercury   | none    |
+| capricorn   | saturn  | mars       | moon      | jupiter |
+| aquarius    | saturn  | none       | sun       | none    |
+| pisces      | jupiter | venus      | mercury   | mercury |
