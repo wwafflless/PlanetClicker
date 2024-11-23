@@ -3,7 +3,7 @@
 ################################
 
 [ui]
-    welcome_message = "Hello there, beautiful weather today!"
+    welcome_text = "Hello there, beautiful weather today!"
 
 ################################
 # info
@@ -32,27 +32,27 @@
 [planet.moon]
     color = "silver"
     radius = 3
-    orbit_radius = 30
+    orbit_radius = 200
     speed = 5
 [planet.mercury]
     color = "orange"
     radius = 7
-    orbit_radius = 50
+    orbit_radius = 200
     speed = 3
 [planet.venus]
     color = "green"
     radius = 10
-    orbit_radius = 80
+    orbit_radius = 200
     speed = 2
 [planet.sun]
     color = "gold"
     radius = 40
-    orbit_radius = 100
+    orbit_radius = 200
     speed = 2
 [planet.mars]
     color = "red"
     radius = 12
-    orbit_radius = 120
+    orbit_radius = 200
     speed = 1
 [planet.jupiter]
     color = "blue"
@@ -62,17 +62,18 @@
 [planet.saturn]
     color = "black"
     radius = 50
-    orbit_radius = 330
+    orbit_radius = 200
     speed = 0.1
-[planet.uranus]
-    color = "violet"
-[planet.neptune]
-    color = "white"
+# [planet.uranus]
+#     color = "violet"
+# [planet.neptune]
+#     color = "white"
 
 ################################
 # zodiac
 ################################
 
+[zodiac]
 [zodiac.aries]
     element = "fire"
     triplicity = "cardinal"
