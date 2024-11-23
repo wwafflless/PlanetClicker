@@ -1,2 +1,6 @@
 * [ ] use spritesheet for planets
 * [ ] convert planets to pixel art
+* [ ] set up formatter (black)
+* [ ] set up lsp (pyright)
+* [ ] set up testing (pytest)
+* [ ] use other package system (poetry?)
