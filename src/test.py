@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((750, 650))
 FPS = pygame.time.Clock()
 FPS.tick(60)
 
-pixel_font = pygame.font.Font("ThaleahFat.ttf", 32)
+pixel_font = pygame.font.Font("assets/ThaleahFat.ttf", 16)
 
 class Planet():
     def __init__(self, radius, label, color, distance):
@@ -50,7 +50,7 @@ class Planet():
         #    self.center = (random.randint(0, screen.get_width() - self.radius), -(self.radius + 25))
         surface.blit(self.label, self.center)
 
-#test_text = pixel_font.render("Hello there, beautiful weather today!", True, (255, 255, 255))
+test_text = pixel_font.render("Hello there, beautiful weather today!", True, (255, 255, 255))
 
 NUM_PLANETS = 7
 
@@ -82,6 +82,7 @@ while True:
             planet.circMove()
 
     screen.fill((0, 0, 0))
+    screen.blit(test_text, (10, 10))
     
     for planet in all_planets:
         planet.mouseUpdate(mouse)
