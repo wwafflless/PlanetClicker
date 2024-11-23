@@ -17,7 +17,7 @@ class Game:
         self.size = pygame.Rect(0, 0, width, height)
 
         self.test_text = pixel_font.render(
-            "Hello there, beautiful weather today!", True, (255, 255, 255)
+            data["welcome_message"], True, (255, 255, 255)
         )
         all_planets = pygame.sprite.Group()
         for k, v in data["planets"].items():

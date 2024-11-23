@@ -1,3 +1,5 @@
+welcome_message = "Hello there, beautiful weather today!"
+
 [planets.earth]
 radius = 20
 orbit_radius = 0
