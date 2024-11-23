@@ -1,4 +1,3 @@
-from __future__ import annotations
 import pygame
 import math
 from assets import planet_images

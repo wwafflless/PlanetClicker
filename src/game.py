@@ -6,6 +6,7 @@ pygame.display.set_caption("Simple Game")
 
 from planet import Planet
 from assets import pixel_font
+from game_data import data
 
 
 class Game:
@@ -19,50 +20,8 @@ class Game:
             "Hello there, beautiful weather today!", True, (255, 255, 255)
         )
         all_planets = pygame.sprite.Group()
-        all_planets.add(
-            Planet(
-                name="earth",
-                radius=20,
-                orbit_radius=0,
-                speed=0,
-            ),
-            Planet(
-                name="moon",
-                radius=3,
-                orbit_radius=30,
-                speed=5,
-            ),
-            Planet(
-                name="mercury",
-                radius=7,
-                orbit_radius=50,
-                speed=3,
-            ),
-            Planet(
-                name="venus",
-                radius=10,
-                orbit_radius=80,
-                speed=2,
-            ),
-            Planet(
-                name="mars",
-                radius=12,
-                orbit_radius=120,
-                speed=1,
-            ),
-            Planet(
-                name="jupiter",
-                radius=40,
-                orbit_radius=200,
-                speed=0.2,
-            ),
-            Planet(
-                name="saturn",
-                radius=50,
-                orbit_radius=330,
-                speed=0.1,
-            ),
-        )
+        for k, v in data["planets"].items():
+            all_planets.add(Planet(name=k, **v))
         self.all_planets = all_planets
 
     def run(self):

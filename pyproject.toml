@@ -10,7 +10,8 @@ authors = [
 ]
 
 dependencies = [
-  "pygame"
+  "pygame",
+  "toml"
 ]
 
 # [project.optional-dependencies]
@@ -28,7 +29,6 @@ include = ["src"]
 exclude = ["**/__pycache__", "**/tests/*"]
 executionEnvironments = [
   { root = "." },
-  # { root = "tests" },
 ]
 
 [project.scripts]
