@@ -10,7 +10,8 @@ authors = [
 ]
 
 dependencies = [
-  "pygame",
+  "pygame_ce",
+  "pygame_gui",
   "toml",
   "pytest < 5.0.0",
   "pytest-cov[all]"
