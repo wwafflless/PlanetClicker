@@ -38,32 +38,3 @@ def run_game(width, height, fps, starting_scene):
 
         pygame.display.flip()
         clock.tick(fps)
-
-
-# class Game:
-#     def __init__(self, width=800, height=600):
-#         self.screen = pygame.display.set_mode((width, height))
-#         self.clock = pygame.time.Clock()
-#         self.running = True
-#         self.size = pygame.Rect(0, 0, width, height)
-#         self.mana = 0
-#         self.scene = ClickerScene()
-
-#     def run(self):
-#         while self.running:
-#             self.handle_input()
-#             self.update()
-#             self.draw()
-#             self.clock.tick(60)
-#         pygame.quit()
-#         sys.exit()
-
-#     def handle_input(self):
-#         self.scene.handle_input(pygame.event.get())
-
-#     def update(self):
-#         self.scene.update()
-
-#     def draw(self):
-#         self.scene.draw(self.screen)
-#         pygame.display.flip()

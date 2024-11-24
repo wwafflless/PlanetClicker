@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pygame
 
-from src.asset import pixel_font
+from src.asset.font import text_font
 from src.data import data
 from src.planet import Planet
 from src.scene import Scene
@@ -12,7 +12,7 @@ class ClickerScene(Scene):
     def __init__(self):
         super().__init__("clicker")
 
-        self.test_text = pixel_font.render(
+        self.test_text = text_font.render(
             data["ui"]["welcome_text"], False, (255, 255, 255)
         )
         all_planets = pygame.sprite.Group()
@@ -47,7 +47,7 @@ class ClickerScene(Scene):
         for i, info in enumerate(self.infos.items()):
             k, v = info
             screen.blit(
-                pixel_font.render(
+                text_font.render(
                     k,
                     False,
                     (255, 255, 255),
@@ -55,7 +55,7 @@ class ClickerScene(Scene):
                 (550, i * 10),
             )
             screen.blit(
-                pixel_font.render(
+                text_font.render(
                     str(v),
                     False,
                     (255, 255, 255),
