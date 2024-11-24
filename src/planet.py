@@ -36,7 +36,7 @@ class Planet(pygame.sprite.Sprite):
         self.angle += self.speed
         self.angle = self.angle % 360
         self.rect.x = (
-            400 + self.orbit_radius * math.cos(math.radians(self.angle)) - self.radius
+            200 + self.orbit_radius * math.cos(math.radians(self.angle)) - self.radius
         )
         self.rect.y = (
             300 + self.orbit_radius * math.sin(math.radians(self.angle)) - self.radius

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from src.asset.color import Color
 import pygame
 
 from src.asset.font import text_font
@@ -42,7 +43,7 @@ class ClickerScene(Scene):
         pygame.display.update()
 
     def render(self, screen):
-        screen.fill((0, 0, 0))
+        screen.fill(Color.black)
         screen.blit(self.test_text, (0, 0))
         for i, info in enumerate(self.infos.items()):
             k, v = info

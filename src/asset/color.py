@@ -13,10 +13,7 @@ import pygame
 
 
 class Color(SimpleNamespace):
-    # text = (254, 254, 254)
-    # background = (1, 1, 1)
-    # brand = (200, 210, 255)
-    # accent = (240, 210, 10)
+    black = pygame.Color("#111111")
     text = pygame.Color("#eeeeeeee")
     background = pygame.Color("#221f59")
     brand = pygame.Color("#e6bf73")
