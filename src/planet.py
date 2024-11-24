@@ -1,7 +1,7 @@
 import pygame
 import math
-from asset import planet_images
-from game_data import data
+from src.asset import planet_images
+from src.data import data
 
 
 class Planet(pygame.sprite.Sprite):

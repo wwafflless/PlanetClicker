@@ -11,22 +11,26 @@ authors = [
 
 dependencies = [
   "pygame",
-  "toml"
+  "toml",
+  "pytest < 5.0.0",
+  "pytest-cov[all]"
 ]
-
-# [project.optional-dependencies]
-# test = [
-#   "pytest < 5.0.0",
-#   "pytest-cov[all]"
-# ]
 
 [project.urls]
 repository = "https://github.com/wwafflless/PlanetClicker"
 
+[tool.pytest.ini_options]
+pythonpath = "."
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]
+
 [tools.pyright]
 pythonpath = ["src"]
 include = ["src"]
-exclude = ["**/__pycache__", "**/tests/*"]
+exclude = ["**/__pycache__"]
 executionEnvironments = [
   { root = "." },
 ]
