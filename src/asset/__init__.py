@@ -1,11 +1,4 @@
 import pygame
-import os
-
-# print current working directory
-f = os.path.join(os.getcwd(), "assets", "ThaleahFat.ttf")
-print(f)
-
-pixel_font = pygame.font.Font(f, 16)
 
 planet_images = dict(
     earth=pygame.image.load("assets/earth.png"),
