@@ -1,0 +1,93 @@
+#+title: Planet Clicker
+A game about looking at the stars
+
+* Overview
+| title     | Planet Clicker                    |
+| genres    | clicker, idler, strategy          |
+| platforms | steam (win, mac, linux), android? |
+| audiences | casual                            |
+| summary   | ?                                 |
+* Team
+| name | role        |
+| adam | ice cream   |
+| ben  | telekinesis |
+* Gameplay
+** TODO Core Mechanics
+/Describe the main mechanics that players will engage with./
+/Highlight what makes these mechanics unique./
+
++ start by clicking to generate *mana*
+  + have a resource counter that tracks mana
++ purchase planets/etc
+  + *planets* can automatically generate mana
++ upgrade sun, planets, click, etc
+  + sun can be upgraded to reduce cycle time (how long takes each planet to generate mana)
+  + planets can be upgraded in various ways
+  + click can be upgraded to increase the amount of resources obtained per click or over time.
++ unlock new areas, abilities, etc?
++ occasionally waves of enemies may spawn
++ player can purchase items such as new suns, skins, etc
+** Strategy
++ must decide how to best spend their resources; eg, balancing between upgrading click power versus automation
++ timing of purchasing upgrades
+** TODO Game Loop
+/Explain the cycle of actions players will take./
+/What do players do repeatedly?/
+** TODO Progression
+How do players progress? (levels, experience, items)
+Mention any leveling systems, skill trees, etc.
+** TODO Difficulty
++ Describe how difficulty scales throughout the game.
++ Include any dynamic difficulty adjustments if applicable.
+* Story
+** TODO Narrative Overview
++ Summary of the game's story and themes.
+** TODO Setting
++ Describe the game world, time period, and notable locations.
+** TODO Characters
++ List main characters and their roles in the story.
++ Include a brief description and motivations for each character.
+* Art and Aesthetics
+** TODO Art Style
++ Describe the
+visual style (2D, 3D, pixel art, etc.)
+** TODO Mood and Tone
++ Discuss the mood of the game (light-hearted, dark, comedic, etc.)
+** User Interface
+- display various metrics clearly, enabling players to track their progress, understand resource generation rates, and make informed decisions about upgrades.
+- bright, colorful graphics, animations, and sound effects to provide immediate feedback and satisfaction from clicking or earning resources.
+
+* Sound and Music
+** TODO Sound Design
++ Talk about sound effects, ambiance, and how they enhance gameplay.
+** TODO Music
++ Discuss themes or styles of music used throughout the game.
+* Marketing and Release
+** TODO Marketing Strategy
++ Describe how you intend to promote the game (social media, trailers, etc.)
+** TODO Release Plan
++ Discuss the timeline for development, beta testing, and launch.
+* Post-Launch
+** TODO Updates and Patches
++ Discuss plans for post-launch support, updates, and user feedback integration.
+** TODO Community Engagement
++ Describe how you will engage with players after release.
+* TODO Miscellaneous
++ Any additional notes, inspirations, or ideas that don't fit elsewhere.
+* notes
+** dignity
+stolen from western astrology
+| sign        | rules   | exaltation | detriment | fall    |
+|-------------+---------+------------+-----------+---------|
+| aries       | mars    | sun        | venus     | saturn  |
+| taurus      | venus   | moon       | mars      | none    |
+| gemini      | mercury | none       | jupiter   | none    |
+| cancer      | moon    | jupiter    | saturn    | mars    |
+| leo         | sun     | none       | saturn    | none    |
+| virgo       | mercury | mercury    | jupiter   | venus   |
+| libra       | venus   | saturn     | mars      | sun     |
+| scorpio     | mars    | none       | venus     | moon    |
+| sagittarius | jupiter | none       | mercury   | none    |
+| capricorn   | saturn  | mars       | moon      | jupiter |
+| aquarius    | saturn  | none       | sun       | none    |
+| pisces      | jupiter | venus      | mercury   | mercury |
