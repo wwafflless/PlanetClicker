@@ -31,8 +31,8 @@ def run_game(width, height, fps):
                 elif event.key == pygame.K_F4 and alt_pressed:
                     quit_attempt = True
             if quit_attempt:
+                pygame.quit()
                 if scene_manager.is_empty():
-                    scene_manager.print()
                     pygame.quit()
                     return
                 else:
