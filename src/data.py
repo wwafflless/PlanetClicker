@@ -9,3 +9,4 @@ def _load_data(data_file: str):
 
 config = _load_data("data/config.toml")
 data = _load_data("data/game.toml")
+settings = _load_data("data/settings.toml")

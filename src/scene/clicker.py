@@ -11,7 +11,7 @@ from src.scene import Scene
 
 class ClickerScene(Scene):
     def __init__(self):
-        super().__init__("clicker")
+        super().__init__("clicker", manager=None)
 
         self.test_text = text_font.render(
             data["ui"]["welcome_text"], False, (255, 255, 255)
@@ -24,8 +24,6 @@ class ClickerScene(Scene):
 
     def handle_input(self, events, pressed_keys):
         for event in events:
-            if event.type == pygame.QUIT:
-                self.running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
             if event.type == pygame.KEYDOWN:

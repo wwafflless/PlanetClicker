@@ -10,7 +10,7 @@ from src.scene import Scene
 
 class PlanetsScene(Scene):
     def __init__(self):
-        super().__init__("planets")
+        super().__init__("planets", None)
 
     def handle_input(self, events, pressed_keys): ...
 

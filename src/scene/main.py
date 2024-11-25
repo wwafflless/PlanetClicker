@@ -8,8 +8,8 @@ from src.scene import Scene
 
 
 class MainScene(Scene):
-    def __init__(self):
-        super().__init__("main")
+    def __init__(self, manager):
+        super().__init__("main", manager)
         self.left_scene = ClickerScene()
         self.right_scene = PlanetsScene()
         self.left_surface = pygame.Surface((400, 600))

@@ -1,0 +1,26 @@
+# game settings
+
+[ui]
+language = ["english"]
+
+[graphics]
+fullscreen = true
+
+resolution = [
+    { width= 640, height= 480 },
+    { width= 1280, height= 720 },
+    { width= 1920, height= 1080 },
+    { width= 2560, height= 1440 },
+    { width= 3840, height= 2160 },
+]
+
+[audio]
+volume = [0, 20, 40, 60, 80, 100]
+# device = ?
+
+[hotkeys]
+hotkeys = [
+    { key= "1", action= "panel_overview" },
+    { key= "2", action= "panel_planets" },
+    { key= "3", action= "panel_upgrades" },
+]
