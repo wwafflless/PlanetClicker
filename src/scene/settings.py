@@ -1,7 +1,7 @@
-from src.scene import Scene
 from src.asset.color import Color
 from src.asset.font import text_font, title_font
 from src.data import settings
+from src.scene import Scene
 
 
 class SettingsScene(Scene):

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Callable
 
 import pygame
+
 from src.asset.color import Color
 from src.asset.font import text_font, title_font
 from src.data import config

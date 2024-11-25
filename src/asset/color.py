@@ -1,5 +1,7 @@
 from types import SimpleNamespace
 
+import pygame
+
 # Space Time (https://www.schemecolor.com/space-time.php)
 # Middle Yellow Red (#E6BF73)
 # Teal Blue (#2B7F94)
@@ -7,9 +9,6 @@ from types import SimpleNamespace
 # Space Cadet (#221F59)
 # Midnight (#67166E)
 # Maximum Purple (#823982).
-
-
-import pygame
 
 
 class Color(SimpleNamespace):

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Any, Callable, Type
 
 import pygame
+
 from src.scene import Scene
 
 

@@ -4,8 +4,8 @@ import pygame
 
 from src.asset.font import text_font
 from src.data import data
-from src.sprite.planet import PlanetSprite
 from src.scene import Scene
+from src.sprite.planet import PlanetSprite
 
 
 class PlanetsScene(Scene):

@@ -2,9 +2,9 @@ from datetime import datetime
 
 import pygame
 
+from src.scene import Scene
 from src.scene.clicker import ClickerScene
 from src.scene.planets import PlanetsScene
-from src.scene import Scene
 
 
 class MainScene(Scene):

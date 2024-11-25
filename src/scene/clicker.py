@@ -1,12 +1,12 @@
 from datetime import datetime
 
-from src.asset.color import Color
 import pygame
 
+from src.asset.color import Color
 from src.asset.font import text_font
 from src.data import data
-from src.sprite.planet import PlanetSprite
 from src.scene import Scene
+from src.sprite.planet import PlanetSprite
 from src.sprite.planet_group import PlanetGroup
 
 
