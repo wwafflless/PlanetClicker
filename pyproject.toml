@@ -32,7 +32,7 @@ testpaths = [
 
 [tools.pyright]
 pythonpath = ["src"]
-include = ["src"]
+include = ["src", "tests"]
 exclude = ["**/__pycache__"]
 executionEnvironments = [
   { root = "." },

@@ -17,13 +17,13 @@ class PlanetGroup(pygame.sprite.Group):
         super().update()
 
         for planet in self.planets:
-            spd = planet.speed
+            spd = planet.speed / 4
             point = planet.point
             point = rotate_x(point, spd * 0)
-            point = rotate_y(point, spd * 1)
+            point = rotate_y(point, spd * 2)
             point = rotate_z(point, spd * 1)
             pt = np.squeeze(point)
-            z = planet.size / 2 - np.asarray(pt)[2] / 8
+            z = planet.size - np.asarray(pt)[2] / 12
             planet.rect = pygame.Rect(
                 (
                     400 + pt[0] - z / 2,
