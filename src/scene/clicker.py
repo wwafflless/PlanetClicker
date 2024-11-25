@@ -5,7 +5,7 @@ import pygame
 
 from src.asset.font import text_font
 from src.data import data
-from src.planet import Planet
+from src.sprite.planet import Planet
 from src.scene import Scene
 
 
