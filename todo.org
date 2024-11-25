@@ -16,3 +16,5 @@
 *** [ ] create new
 ** [ ] upgrades
 *** [ ] clicker
+* [ ] dynamically resize window contents
+* [ ] screen resolution settings

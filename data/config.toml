@@ -1,9 +1,10 @@
+title = "Planet Clicker"
 welcome_text = "welcome message"
 
 [screen]
 width = 800
 height = 600
-title = "My Application"
+title = "Planet Clicker"
 
 [font]
 path = "ThaleahFat.ttf"

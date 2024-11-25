@@ -1,6 +1,7 @@
 import random
 
 import pygame
+
 from src.asset.color import Color
 
 

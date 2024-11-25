@@ -2,64 +2,38 @@ from datetime import datetime
 
 import pygame
 
+from src.asset.color import Color
 from src.asset.font import text_font
 from src.data import data
-from src.planet import Planet
 from src.scene import Scene
+from src.sprite.planet import PlanetSprite
+from src.sprite.solar_system import SolarSystem
 
 
 class ClickerScene(Scene):
     def __init__(self):
-        super().__init__("clicker")
+        super().__init__("clicker", manager=None)
 
         self.test_text = text_font.render(
             data["ui"]["welcome_text"], False, (255, 255, 255)
         )
-        all_planets = pygame.sprite.Group()
-        for k, v in data["planet"].items():
-            all_planets.add(Planet(name=k, **v))
-        self.all_planets = all_planets
-        self.infos = dict()
+        # planets group
+        planets = []
+        for planet_name, planet_props in data["planet"].items():
+            planets.append(
+                PlanetSprite(
+                    name=planet_name,
+                    **planet_props,
+                )
+            )
+        self.solar_system = SolarSystem(planets)
 
-    def handle_input(self, events, pressed_keys):
-        for event in events:
-            if event.type == pygame.QUIT:
-                self.running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pass
-            if event.type == pygame.KEYDOWN:
-                pass
-
-    def update_info(self):
-        # self.infos["mana"] = self.mana
-        self.infos["time"] = datetime.now().strftime("%H:%M:%S")
-        for planet in self.all_planets:
-            self.infos[planet.name] = ", ".join(planet.dignity)
+    def handle_input(self, events, pressed_keys): ...
 
     def update(self):
-        self.update_info()
-        self.all_planets.update()
-        pygame.display.update()
+        self.solar_system.update()
 
     def render(self, screen):
-        screen.fill((0, 0, 0))
+        screen.fill(Color.black)
+        self.solar_system.draw(screen)
         screen.blit(self.test_text, (0, 0))
-        for i, info in enumerate(self.infos.items()):
-            k, v = info
-            screen.blit(
-                text_font.render(
-                    k,
-                    False,
-                    (255, 255, 255),
-                ),
-                (550, i * 10),
-            )
-            screen.blit(
-                text_font.render(
-                    str(v),
-                    False,
-                    (255, 255, 255),
-                ),
-                (650, i * 10),
-            )
-        self.all_planets.draw(screen)
