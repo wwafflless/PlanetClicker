@@ -1,0 +1,14 @@
+welcome_text = "welcome message"
+
+[screen]
+width = 800
+height = 600
+title = "My Application"
+
+[font]
+path = "ThaleahFat.ttf"
+size = 16
+
+[colors]
+background = "#333333"
+text = "#f0f0f0"
