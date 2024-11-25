@@ -26,12 +26,12 @@
 
 [planet.sun]
     color = "gold"
-    radius = 40
+    radius = 10
     orbit_radius = 0
     speed = 0
 [planet.moon]
     color = "silver"
-    radius = 3
+    radius = 5
     orbit_radius = 80
     speed = 5
 [planet.mercury]
@@ -46,7 +46,7 @@
     speed = 3
 [planet.earth]
     color = "brown"
-    radius = 20
+    radius = 11
     orbit_radius = 130
     speed = 5
 [planet.mars]
@@ -56,14 +56,14 @@
     speed = 1
 [planet.jupiter]
     color = "blue"
-    radius = 40
+    radius = 20
     orbit_radius = 180
-    speed = 0.3
+    speed = 0.8
 [planet.saturn]
     color = "black"
-    radius = 50
+    radius = 22
     orbit_radius = 200
-    speed = 0.2
+    speed = 0.5
 # [planet.uranus]
 #     color = "violet"
 # [planet.neptune]
