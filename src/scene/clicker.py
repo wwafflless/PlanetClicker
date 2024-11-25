@@ -7,7 +7,7 @@ from src.asset.font import text_font
 from src.data import data
 from src.scene import Scene
 from src.sprite.planet import PlanetSprite
-from src.sprite.planet_group import PlanetGroup
+from src.sprite.solar_system import SolarSystem
 
 
 class ClickerScene(Scene):
@@ -26,14 +26,14 @@ class ClickerScene(Scene):
                     **planet_props,
                 )
             )
-        self.planets_group = PlanetGroup(planets)
+        self.solar_system = SolarSystem(planets)
 
     def handle_input(self, events, pressed_keys): ...
 
     def update(self):
-        self.planets_group.update()
+        self.solar_system.update()
 
     def render(self, screen):
         screen.fill(Color.black)
-        self.planets_group.draw(screen)
+        self.solar_system.draw(screen)
         screen.blit(self.test_text, (0, 0))

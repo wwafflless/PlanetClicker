@@ -7,45 +7,40 @@ from numpy import cos, cross, dot, eye, sin
 
 from src.asset import planet_images
 from src.data import data
-from src.math.rotate import rotate_z
+from src.math.rotate import rotate_x, rotate_y, rotate_z
 
 
 class PlanetSprite(pygame.sprite.Sprite):
     def __init__(self, name, radius, orbit_radius, speed, **kwargs):
         super().__init__()
-        self.point = rotate_z(
-            np.array([[orbit_radius, 0, 0]]),
-            3,
-        )
-        self.name = name
-        print("point", self.point)
-        self.image = planet_images[name]
-        self.image = pygame.transform.scale(self.image, (radius * 2, radius * 2))
-        self.radius = radius
-        self.orbit_radius = orbit_radius
+        self.pos = np.array([orbit_radius * 2, 0, 0])
+        self.pos = self.pos
+        self.radius = radius * 2
         self.speed = speed
+        self.image = planet_images[name]
 
-    @property
-    def z(self):
-        return np.squeeze(self.point)[2]
+    def update(self):
+        self.pos = rotate_z(self.pos, self.speed * 0.5)
+        norm = np.linalg.norm(self.pos)
+        size = (1 + self.pos[2] / norm) * 2 * self.radius
+        self.rect = pygame.Rect(
+            (self.pos[0] - self.radius, self.pos[1] - self.radius),
+            (size, size),
+        )
 
-    @property
-    def size(self):
-        return self.radius * 8
-
-    @property
-    def dignity(self):
-        if zodiac_data := data["zodiac"].get(self.zodiac):
-            return filter(
-                lambda dgnty: self.name == zodiac_data.get(dgnty),
-                ["ruler", "exalted", "detriment", "fall"],
-            )
-        return []
-
-    @property
-    def zodiac(self):
-        signs = list(data["zodiac"].keys())
-        self.theta = 29  # HACK
-        for i in range(len(signs)):
-            if self.theta >= i * 30 and self.theta < (i + 1) * 30:
-                return signs[i]
+    def draw(self, surface):
+        pos = rotate_x(self.pos, 80)
+        # pygame.draw.circle(
+        #     surface,
+        #     (255, 255, 255),
+        #     (pos[0] + 400, pos[1] + 300),
+        #     self.radius,
+        # )
+        self.image = pygame.transform.scale(
+            self.image,
+            (self.radius * 2, self.radius * 2),
+        )
+        surface.blit(
+            self.image,
+            (pos[0] + 400 - self.radius, pos[1] + 300 - self.radius),
+        )

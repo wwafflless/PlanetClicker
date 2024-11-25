@@ -26,7 +26,7 @@
 
 [planet.sun]
     color = "gold"
-    radius = 5
+    radius = 15
     orbit_radius = 0
     speed = 0
 [planet.moon]
