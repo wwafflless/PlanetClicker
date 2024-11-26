@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\src"
+    "\\src",
+    "\\src\\asset",
+    "\\src\\scene",
+    "\\src\\sprite",
+    "\\src\\ui"
   ],
-  "SelectedNode": "\\src\\test.py",
+  "SelectedNode": "\\src\\ui\\uibutton.py",
   "PreviewInSolutionExplorer": false
 }

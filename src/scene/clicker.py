@@ -2,6 +2,7 @@ from datetime import datetime
 from tkinter import SE
 
 import pygame
+import random
 
 from src.asset.color import Color
 from src.asset.font import text_font
@@ -13,9 +14,9 @@ from src.ui.panel import Panel
 from src.ui.uibutton import UIButton
 
 #   because I don't know how to use the data file yet
-ui_bg_color = (200, 200, 200, 255)
-ui_unselected_color = (210, 210, 210, 255)
-ui_highlight_color = (220, 220, 220, 255)
+ui_bg_color = (100, 100, 100, 155)
+ui_unselected_color = (110, 110, 110, 155)
+ui_highlight_color = (120, 120, 120, 155)
 
 class ClickerScene(Scene):
     def __init__(self):
@@ -40,22 +41,45 @@ class ClickerScene(Scene):
         
         self.clicker_panel = Panel((0, 400), (800, 200), ui_bg_color)
         for i in range(4):
-            next_button = UIButton((self.clicker_panel.pos[0] + (i * 200), self.clicker_panel.pos[1]), (200, 50), True, ui_unselected_color, (0, 0, 0, 0), ui_highlight_color)
-            next_button.link(2, self.on_button_click)   # <-- ideally this 2 is an enum, I don't know how to best go about that in python sorry
+            next_button = UIButton((self.clicker_panel.pos[0] + (i * 200), self.clicker_panel.pos[1]), (200, 25), True, ui_unselected_color, ui_highlight_color, (0, 0, 0, 0))
+            next_button.link(2, self.panel_button_click)   # <-- ideally this 2 is an enum, I don't know how to best go about that in python sorry
             self.clicker_panel.add_child(next_button)
             self.panel_buttons.append(next_button)
         self.panel_buttons[0].selected = True
+        
+        self.tab_panels = []
+        
+        for i in range(4):
+            new_tab = Panel((self.clicker_panel.pos[0],self.clicker_panel.pos[1] + self.panel_buttons[0].width_height[1]), (self.clicker_panel.width_height[0],self.clicker_panel.width_height[1] - self.panel_buttons[0].width_height[1]), (0, 0, 0, 0))
+            tab_button = UIButton((random.randint(0, 700), random.randint(450, 500)), (100, 100), True, (0, 255, 255, 255), (134, 255, 255, 255))
+            tab_button.link(2, self.tab_button_click)
+            new_tab.add_child(tab_button)
+            self.tab_panels.append(new_tab)
+        self.current_tab = self.tab_panels[0]
     
     #   makes them mutually exclusive
-    def on_button_click(self, button, event):
-        for b in self.panel_buttons:
-            b.selected = False
-        button.selected = True
+    def panel_button_click(self, button, event):
+        for i in range(len(self.panel_buttons)):
+            if self.panel_buttons[i] == button:
+                clicked_index = i
+        
+        if not self.panel_buttons[clicked_index].selected:
+            for b in self.panel_buttons:
+                b.selected = False
+            button.selected = True
+            
+            self.current_tab = self.tab_panels[clicked_index]
+
+    def tab_button_click(self, button, event):
+        test_texts = ["Adam, don't click me.", "Adam, leave me alone please.", "Seriously, Adam, stop.", "You clicked me, I get it!"]
+        print(test_texts[random.randint(0, len(test_texts)-1)])
 
     def handle_input(self, events, pressed_keys):
+        self.current_tab.handle_input(events, pressed_keys)
         self.clicker_panel.handle_input(events, pressed_keys)
 
     def update(self):
+        self.current_tab.update()
         self.clicker_panel.update()
         self.solar_system.update()
 
@@ -64,3 +88,4 @@ class ClickerScene(Scene):
         self.solar_system.draw(screen)
         #screen.blit(self.test_text, (0, 0))
         self.clicker_panel.draw(screen)
+        self.current_tab.draw(screen)

@@ -6,7 +6,7 @@ from enum import Enum
 #   can be disabled and enabled, given different colors whether it's hovered, selected, or disabled
 #   mouse input is handled through callbacks which are linked outside of the class, or could be overriden
 class UIButton(UIElement):
-    def __init__(self, pos, width_height, interactable=True, color=None, selected_color=None, highlight_color=None, disabled_color=None):
+    def __init__(self, pos, width_height, interactable=True, color=(0, 0, 0, 255), highlight_color=(134, 134, 134, 255), selected_color=(255, 255, 255, 255), disabled_color=(255, 0, 0, 255)):
         super().__init__(pos, width_height, color)
         self.interactable = interactable
         self.selected = False
