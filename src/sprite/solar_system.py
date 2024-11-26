@@ -18,6 +18,16 @@ class SolarSystem:
             planet.update()
 
     def draw(self, surface):
+        #selection sort planets by y value for correct draw order
+        for i in range(len(self.planets) - 2):
+            lowest = i
+            for j in range(i, len(self.planets) - 1):
+                if self.planets[j].pos[1] < self.planets[lowest].pos[1]:
+                    lowest = j
+            temp = self.planets[i]
+            self.planets[i] = self.planets[lowest]
+            self.planets[lowest] = temp
+        
         self.bg_stars.draw(surface)
         for planet in self.planets:
             planet.draw(surface)
