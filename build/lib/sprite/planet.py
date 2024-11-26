@@ -42,5 +42,5 @@ class PlanetSprite(pygame.sprite.Sprite):
         )
         surface.blit(
             self.image,
-            (pos[0] + (surface.width/2) - self.radius, pos[1] + (surface.height/3) - self.radius),
+            (pos[0] + 400 - self.radius, pos[1] + 300 - self.radius),
         )
