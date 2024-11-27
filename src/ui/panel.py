@@ -2,8 +2,8 @@ from src.ui.uielement import UIElement
 
 #   panel element, just a base ui element that has children, updates those children as well
 class Panel(UIElement):
-    def __init__(self, pos, width_height, color=None):
-        super().__init__(pos, width_height, color)
+    def __init__(self, pos, width_height, color=None, label=""):
+        super().__init__(pos, width_height, color, label)
         self.children = []
         
     def add_child(self, to_add):
