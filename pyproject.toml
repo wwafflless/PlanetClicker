@@ -1,42 +1,52 @@
 [project]
-name = "planet"
+name = "planetclicker"
 version = "0.0.1"
 description = "Clicker game."
-readme = "README.md"
-requires-python = ">=3.11"
+readme = "readme.org"
+requires-python = ">=3.12"
 authors = [
   {name = "Ben Kanter"},
   {name = "Adam Neeley"}
 ]
-
 dependencies = [
+  "python",
   "pygame_ce",
   "pygame_gui",
   "toml",
   "numpy",
-  "scipy",
-  "pytest < 5.0.0",
-  "pytest-cov[all]"
+  "pytest",
+  "pytest-cov",
 ]
-
 [project.urls]
 repository = "https://github.com/wwafflless/PlanetClicker"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
 pythonpath = "."
 minversion = "6.0"
 addopts = "-ra -q"
-testpaths = [
-    "tests"
-]
+testpaths = ["tests"]
 
-[tools.pyright]
-pythonpath = ["src"]
-include = ["src", "tests"]
+[tool.pyright]
+pythonpath = ["planetclicker"]
+include = ["planetclicker", "tests"]
 exclude = ["**/__pycache__"]
 executionEnvironments = [
   { root = "." },
 ]
 
-[project.scripts]
-main = "main"
+# [tool.poetry]
+# name = "planetclicker"
+# version = "0.1.0"
+# description = ""
+# authors = ["Adam Neeley <adam.t.neeley@protonmail.com>"]
+# readme = "readme.org"
+
+# [tool.poetry.dependencies]
+
+# [build-system]
+# requires = ["poetry-core"]
+# build-backend = "poetry.core.masonry.api"

@@ -1,15 +1,25 @@
-title = "Planet Clicker"
-welcome_text = "welcome message"
+[game]
+difficulty = "easy"
 
-[screen]
-width = 800
-height = 600
-title = "Planet Clicker"
+[locale]
+timezone = 'pst'
+language = 'english-us'
+
+[ui]
+window_title= "Planet Clicker"
+dpi = 72
+resolution = { width= 1280, height= 720 }
+fullscreen = true
 
 [font]
+[font.title]
 path = "ThaleahFat.ttf"
-size = 16
+size = 20
+
+[font.text]
+path = "ThaleahFat.ttf"
+size = 12
 
 [colors]
-background = "#333333"
+background = "#331133"
 text = "#f0f0f0"

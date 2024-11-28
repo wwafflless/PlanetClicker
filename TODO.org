@@ -1,0 +1,23 @@
+* TODO
+** development
+*** [ ] set up formatter (black)
+*** [ ] set up lsp (pyright)
+*** [ ] set up testing (pytest)
+*** [ ] use other package system (poetry?)
+** project
+*** assets
+**** [ ] convert images to pixel art
+**** [ ] convert animations  to sprite sheets
+*** interface [0%]
+**** [ ] clicker
++ planets orbiting sun
++ baddies attack
++ +points indication
++ +bonus indication
+**** [ ] planets
+***** [ ] list
+***** [ ] create new
+**** [ ] upgrades
+***** [ ] clicker
+*** [ ] dynamically resize window contents
+*** [ ] screen resolution settings
