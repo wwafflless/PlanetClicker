@@ -9,7 +9,7 @@ class SceneManager:
 
     def push_scene(self, scene):
         """adds scene to stack, set its manager to self"""
-        self.print()
+        #self.print()
         self.stack.append(scene)
 
     def print(self):

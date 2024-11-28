@@ -6,13 +6,14 @@ from enum import Enum
 #   can be disabled and enabled, given different colors whether it's hovered, selected, or disabled
 #   mouse input is handled through callbacks which are linked outside of the class, or could be overriden
 class UIButton(UIElement):
-    def __init__(self, pos, width_height, color=(0, 0, 0, 255), label="", interactable=True, highlight_color=(134, 134, 134, 255), selected_color=(255, 255, 255, 255), disabled_color=(255, 0, 0, 255), text_disabled_color=(0, 0, 0, 0)):
+    def __init__(self, pos, width_height, color=(0, 0, 0, 255), label="", interactable=True, highlight_color=(134, 134, 134, 255), selected_color=(255, 255, 255, 255), disabled_color=(255, 0, 0, 255), text_button = False):
         super().__init__(pos, width_height, color, label)
         self.interactable = interactable
         if interactable:
             self.enable()
         else:
             self.disable()
+        self.text_button = text_button
         self.selected = False
         self.hovered = False
         self.callbacks = [None, None, None, None]
@@ -23,9 +24,6 @@ class UIButton(UIElement):
         self.selected_color = selected_color
         self.highlight_color = highlight_color
         self.disabled_color = disabled_color
-        
-        self.text_draw_color = self.text_color
-        self.text_disabled_color = text_disabled_color
 
     #   links a mouse action to a function outside of the class
     def link(self, link_to, callback):
@@ -54,16 +52,22 @@ class UIButton(UIElement):
 
     #   draws the corresponding color for the current mouse state
     def draw(self, surface):
-        self.text_color = self.text_draw_color
+        toSet = None
         if not self.interactable:
-            self.color = self.disabled_color
-            self.text_color = self.text_disabled_color
+            toSet = self.disabled_color
         elif self.selected:
-            self.color = self.selected_color
+            toSet = self.selected_color
         elif self.hovered:
-            self.color = self.highlight_color
+            toSet = self.highlight_color
         else:
-            self.color = self.draw_color
+            toSet = self.draw_color
+            
+        if self.text_button:
+            self.text_color = toSet
+            self.color = (0,0,0,0)
+        else:
+            self.color = toSet
+            
         super().draw(surface)
 
     #   calls the corresponding mouse actions if they happened

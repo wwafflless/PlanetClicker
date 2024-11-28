@@ -33,11 +33,13 @@ class ClickerScene(Scene):
         self.solar_system = SolarSystem(planets)
         
         self.panel_buttons = []
-        panel_labels = ["planets", "zodiac", "stars", "your mom"]
         
         self.clicker_panel = Panel((0, 400), (800, 200), ui_bg_color)
         for i in range(4):
-            next_button = UIButton((self.clicker_panel.pos[0] + (i * 200), self.clicker_panel.pos[1]), (200, 25), ui_unselected_color, panel_labels[i], (i==0), ui_highlight_color, (0, 0, 0, 0), ui_unselected_color)
+            label = ""
+            if i == 0:
+                label = "planets"
+            next_button = UIButton((self.clicker_panel.pos[0] + (i * 200), self.clicker_panel.pos[1]), (200, 25), ui_unselected_color, label, (i==0), ui_highlight_color, (0, 0, 0, 0), ui_unselected_color)
             next_button.link(2, self.panel_button_click)   # <-- ideally this 2 is an enum, I don't know how to best go about that in python sorry
             self.clicker_panel.add_child(next_button)
             self.panel_buttons.append(next_button)
@@ -74,7 +76,9 @@ class ClickerScene(Scene):
                 clicked_index = i
                
         if clicked_index < 3:
-            self.panel_buttons[clicked_index+1].enable()        
+            panel_labels = ["planets", "zodiac", "stars", "your mom"]
+            self.panel_buttons[clicked_index+1].enable()
+            self.panel_buttons[clicked_index+1].label = panel_labels[clicked_index+1]
 
         test_texts = ["Adam, don't click me.", "Adam, leave me alone please.", "Seriously, Adam, stop.", "You clicked me, I get it!"]
         print(test_texts[random.randint(0, len(test_texts)-1)])
