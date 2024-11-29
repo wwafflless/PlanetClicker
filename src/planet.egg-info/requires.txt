@@ -1,7 +1,0 @@
-pygame_ce
-pygame_gui
-toml
-numpy
-scipy
-pytest<5.0.0
-pytest-cov[all]
