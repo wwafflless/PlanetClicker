@@ -1,23 +1,18 @@
-import numpy as np
-import pygame
-
-from planetclicker.asset import planet_images
-from planetclicker.math.rotate import rotate_x, rotate_y, rotate_z
-from planetclicker.particle.bg_star import BGStarSystem
-from planetclicker.sprite.planet import PlanetSprite
+from pygame.sprite import Group
+from pygame.surface import Surface
+from planetclicker.sprite.circle.bg_star import BGStarSystem
+from planetclicker.model.planet import Planet
 
 
 class SolarSystem:
-    def __init__(self, planets: list[PlanetSprite]):
-        self.planets = planets
+    def __init__(self, planets: list[Planet]):
         self.bg_stars = BGStarSystem(100)
+        self.planets = Group([p.sprite for p in planets])
 
     def update(self):
         self.bg_stars.update()
-        for planet in self.planets:
-            planet.update()
+        self.planets.update()
 
-    def draw(self, surface):
+    def draw(self, surface: Surface):
         self.bg_stars.draw(surface)
-        for planet in self.planets:
-            planet.draw(surface)
+        self.planets.draw(surface)

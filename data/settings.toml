@@ -1,26 +1,14 @@
-# game settings
-
+# These settings represent all possible values for settings.
 [ui]
-language = ["english"]
-
+language = ["en-us"]
 [graphics]
-fullscreen = true
-
+fullscreen = [true, false]
 resolution = [
-    { width= 640, height= 480 },
-    { width= 1280, height= 720 },
-    { width= 1920, height= 1080 },
-    { width= 2560, height= 1440 },
-    { width= 3840, height= 2160 },
+    [640,  480],
+    [1280, 720],
+    [1920, 1080],
+    [2560, 1440],
+    [3840, 2160],
 ]
-
 [audio]
 volume = [0, 20, 40, 60, 80, 100]
-# device = ?
-
-[hotkeys]
-hotkeys = [
-    { key= "V_1", command= "panel_overview" },
-    { key= "V_2", command= "panel_planets" },
-    { key= "V_3", command= "panel_upgrades" },
-]

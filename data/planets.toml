@@ -1,67 +1,50 @@
-welcome_text = "Hello there, beautiful weather today!"
-
-################################
-# info
-################################
-
-[info.triplicity]
-cardinal = "initial"
-fixed = "stable"
-mutable = "changing"
-
-[info.dignity]
-rules = "super powerful"
-exalted = "powerful"
-detriment = "weak"
-fall = "super weak"
-
 ################################
 # planets
 ################################
 
-[planet.sun]
+[[planet]]
 color = "gold"
 radius = 15
 orbit_radius = 0
 speed = 0
 sprite = {type="sheet", name="orb_15", count=10, rect=[0, 0, 73, 73]}
-[planet.moon]
+[[planet]]
 color = "silver"
 radius = 1
 orbit_radius = 80
 speed = 5
 sprite = {type="sheet", name="orb_14", count=10, rect=[0, 0, 46, 46]}
-[planet.mercury]
+[[planet]]
 color = "orange"
 radius = 3
 orbit_radius = 100
 speed = 3
 sprite = {type="sheet", name="orb_13", count=10, rect=[0, 0, 24, 24]}
-[planet.venus]
+[[planet]]
 color = "green"
 radius = 4
 orbit_radius = 120
 speed = 3
 sprite = {type="sheet", name="orb_2", count=10, rect=[0, 0, 51, 51]}
-[planet.earth]
+[[planet]]
 color = "brown"
 radius = 5
 orbit_radius = 130
 speed = 5
 sprite = {type="sheet", name="orb_5", count=10, rect=[0, 0, 15, 15]}
-[planet.mars]
+[[planet]]
 color = "red"
 radius = 6
 orbit_radius = 150
 speed = 1
 sprite = {type="sheet", name="orb_11", count=10, rect=[0, 0, 45, 45]}
-[planet.jupiter]
+[[planet]]
 color = "blue"
 radius = 9
 orbit_radius = 180
 speed = 0.8
 sprite = {type="sheet", name="orb_6", count=10, rect=[0, 0, 71, 71]}
-[planet.saturn]
+[[planet]]
 color = "black"
 radius = 10
 orbit_radius = 200

@@ -16,7 +16,7 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
-      python = pkgs.python3;
+      python = pkgs.python312;
 
     in
     {
@@ -27,6 +27,7 @@
         in
         pkgs.mkShell {
           packages = [ pythonEnv ];
+          SDL_VIDEODRIVER = "wayland";
         };
 
       packages.x86_64-linux.default =

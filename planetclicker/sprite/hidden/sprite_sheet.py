@@ -1,16 +1,24 @@
 import pygame
+import os
 from pygame.sprite import Sprite
 
 
 class SpriteSheet(Sprite):
-    def __init__(self, filename):
-        """Loads SpriteSheet from a given file"""
-        with open(filename) as f:
-            self.sheet = pygame.image.load(f).convert()
-            print(dict(sheet=self.sheet))
-        # except pygame.error:
-        #     print("Unable to load spritesheet image:", filename)
-        #     raise Exception("Unable to load SpriteSheet image")
+    def __init__(self, filename: str):
+        super().__init__()
+        """
+        SpriteSheet
+        - filename: str
+        """
+        print(f"{filename} found: {'yes' if os.path.isfile(filename) else 'no'}")
+
+        try:
+            sheet = pygame.image.load(filename)
+            print("SHEET", sheet.__dict__)
+            self.sheet = sheet.convert_alpha() if sheet.get_alpha() else sheet.convert()
+            print(dict(size=self.sheet.size))
+        except pygame.error:
+            raise Exception("Unable to load SpriteSheet image: ", filename)
 
     # Load a specific image from a specific rectangle
     def image_at(self, rectangle, colorkey=None):
@@ -38,6 +46,12 @@ class SpriteSheet(Sprite):
         ]
         return self.images_at(tups, colorkey)
 
+    def update(self): ...
+
+    def draw(self, surface: pygame.Surface):
+        """Draws the image to the surface"""
+        surface.blit(self.sheet, self.sheet.get_rect())
+
 
 class SpriteStripAnim(Sprite):
     """
@@ -62,8 +76,17 @@ class SpriteStripAnim(Sprite):
         """
         super().__init__()
         ss = SpriteSheet(filename)
-        self.images = ss.load_strip(rect, count, colorkey)
+        self.images: list[pygame.Surface] = ss.load_strip(rect, count, colorkey)
+        print(
+            "SpriteSheetAnim",
+            dict(
+                filename=filename,
+                sprite_sheet=ss,
+                images=self.images,
+            ),
+        )
         self.image = self.images[0]
+        self.rect = rect.copy()
         self.i = 0
         self.loop = loop
         self.frames = frames
@@ -86,6 +109,9 @@ class SpriteStripAnim(Sprite):
             self.i += 1
             self.f = self.frames
         return image
+
+    def draw(self, surface: pygame.Surface):
+        surface.blit(self.image, self.rect)
 
     def update(self):
         self.image = self.next()

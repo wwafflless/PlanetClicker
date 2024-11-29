@@ -1,15 +1,13 @@
-from dataclasses import dataclass
-from typing import Callable
-
 import pygame
 
+from planetclicker.scene.manager import SceneManager
 from planetclicker.asset.color import Color
-from planetclicker.asset.font import text_font, title_font
+from planetclicker.asset.font import GameFont
 from planetclicker.data import config
-from planetclicker.particle.bg_star import BGStarSystem
 from planetclicker.scene import Scene
 from planetclicker.scene.main import MainScene
 from planetclicker.scene.settings import SettingsScene
+from planetclicker.sprite.circle.bg_star import BGStarSystem
 from planetclicker.ui.button import Button
 
 
@@ -22,18 +20,18 @@ class TitleScene(Scene):
     - Settings
     """
 
-    def __init__(self, manager):
+    def __init__(self, manager: SceneManager):
         super().__init__(
             name="title",
             manager=manager,
         )
         self.particles = BGStarSystem(n=100)  # background animation
-        self.title_text = title_font.render(
+        self.title_text = GameFont.title.render(
             config.get("title"),
             False,
             Color.brand,
         )
-        self.instruction_text = text_font.render(
+        self.instruction_text = GameFont.text.render(
             "Press ENTER to start",
             False,
             Color.accent,
@@ -94,9 +92,9 @@ class TitleScene(Scene):
         for i, button in enumerate(self.buttons):
             color = Color.accent if button == self.selected_button else Color.text
             screen.blit(
-                text_font.render(button.text, False, color),
+                GameFont.text.render(button.text, False, color),
                 (
-                    self.rect.centerx - text_font.size(button.text)[0] // 2,
+                    self.rect.centerx - GameFont.text.size(button.text)[0] // 2,
                     self.rect.height // 2 + i * 20,
                 ),
             )
