@@ -1,6 +1,5 @@
 import pygame
-from planetclicker.ui.uielement import UIElement
-from enum import Enum
+from planetclicker.ui.element import UIElement
 
 
 #   ui button elements, could easily be split up into multiple button types
@@ -91,21 +90,23 @@ class UIButton(UIElement):
         if not self.interactable:
             return
         for event in events:
-            if event.type == pygame.MOUSEMOTION:
-                if self.does_collide(event.pos):
-                    if not self.hovered:
-                        self.on_mouse_entered(event)
-                        self.hovered = True
-                else:
+            match (event.type):
+                case pygame.MOUSEMOTION:
                     if self.hovered:
+                        if self.does_collide(event.pos):
+                            self.on_mouse_entered(event)
+                            self.hovered = True
+                    else:
                         self.on_mouse_exited(event)
                         self.hovered = False
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if self.does_collide(event.pos):
-                    self.on_mouse_down(event)
-            elif event.type == pygame.MOUSEBUTTONUP:
-                if self.does_collide(event.pos):
-                    self.on_mouse_up(event)
+                    break
+                case pygame.MOUSEBUTTONDOWN:
+                    if self.does_collide(event.pos):
+                        self.on_mouse_down(event)
+                    break
+                case pygame.MOUSEBUTTONUP:
+                    if self.does_collide(event.pos):
+                        self.on_mouse_up(event)
 
     #   returns true if the point is within this button (whole screen coords)
     def does_collide(self, to_check) -> bool:

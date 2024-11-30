@@ -1,6 +1,8 @@
+from pygame.surface import Surface
+import pygame
 from planetclicker.scene.scene import Scene
 from planetclicker.data import Game, Dev
-from planetclicker.model.planet import Planet
+from planetclicker.model.planet import Planet, PhysicsComponent
 from planetclicker.sprite.solar_system import SolarSystem
 from planetclicker.sprite.animated_sprite import AnimatedSprite
 
@@ -12,28 +14,36 @@ class ClickerScene(Scene):
         self.test_text = Game.Font.text.render("welcome_text", False, (255, 255, 255))
         self.solar_system = SolarSystem([])
 
-        for planet in Dev.Planets.all:
-            sprite = AnimatedSprite(
-                filename=f"asset/sheet/{planet.name}.png",
-                width=10,
-                height=10,
-                frames=planet.get("sprite", "count"),
-            )
-            ps = Planet(
-                _value=(0, planet.get("orbit_radius"), 0),
-                **planet,
-                sprite=sprite,
-            )
-            self.solar_system.planets.add(ps.sprite)
+        if planet_datas := Dev.Planets.get("planets"):
+            for planet_data in planet_datas:
+                size = planet_data["sprite"]["rect"][2]
+                sprite = AnimatedSprite(
+                    name=planet_data["sprite"]["name"],
+                    w=size,
+                    h=size,
+                    frames=planet_data["sprite"]["count"],
+                )
+                planet = Planet(
+                    sprite=sprite,
+                    physics=PhysicsComponent(
+                        position=(400, 300, 0),
+                        velocity=(1, 1, 0),
+                        camera=(0, 0, 0),
+                        mass=100,
+                    ),
+                )
+                print(planet)
+                self.solar_system.planets.append(planet)
 
     def handle_input(self, events, pressed_keys): ...
 
     def update(self):
         for p in self.solar_system.planets:
-            p.update()
+            p.sprite.update()
 
-    def render(self, screen):
-        screen.fill(GameColor.black)
-        screen.blit(self.test_text, (0, 0))
+    def render(self, surface: pygame.Surface):
+        # surface.fill(Game.Color.black)
+        # surface.blit(self.test_text, (0, 0))
+        self.solar_system.draw(surface)
         for p in self.solar_system.planets:
-            screen.blit(p.image, (0, 0))
+            p.sprite.draw(surface)

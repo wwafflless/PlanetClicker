@@ -6,9 +6,6 @@ from planetclicker.sprite.sprite_sheet import SpriteSheet
 class AnimatedSprite(pygame.sprite.Sprite):
     """A sprite with an animation."""
 
-    @classmethod
-    def from_data(cls, data: dict): ...
-
     def __init__(
         self,
         name: str,
@@ -27,8 +24,13 @@ class AnimatedSprite(pygame.sprite.Sprite):
             h=self.size,
         )
         self._index = 0
-        rect = pygame.Rect(0, 0, self.w, self.h)
+        self.set_position(0, 0)
+        rect = pygame.Rect(self.x, self.y, self.w, self.h)
         self._images = self.sheet.load_strip(rect, frames)
+
+    def set_position(self, x, y):
+        self.x = x
+        self.y = y
 
     @property
     def current_image(self):
@@ -38,8 +40,8 @@ class AnimatedSprite(pygame.sprite.Sprite):
         """Update the animation frame."""
         self._index = (self._index + 1) % len(self._images)
 
-    def draw(self, screen: pygame.Surface) -> None:
+    def draw(self, surface: pygame.Surface) -> None:
         """Draw the sprite to the screen."""
         rect = self.current_image.get_rect()
-        rect.topleft = 0, 0
-        screen.blit(self.current_image, rect)
+        rect.topleft = self.x, self.y
+        surface.blit(self.current_image, rect)

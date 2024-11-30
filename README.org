@@ -29,6 +29,7 @@ main source code for game
 | summary   | ?                                 |
 ** Team
 | name | role        |
+|------+-------------|
 | adam | ice cream   |
 | ben  | telekinesis |
 ** Gameplay
@@ -94,27 +95,3 @@ visual style (2D, 3D, pixel art, etc.)
 + Describe how you will engage with players after release.
 ** TODO Miscellaneous
 + Any additional notes, inspirations, or ideas that don't fit elsewhere.
-** notes
-*** dignity
-stolen from western astrology
-| sign        | rules   | exaltation | detriment | fall    |
-|-------------+---------+------------+-----------+---------|
-| aries       | mars    | sun        | venus     | saturn  |
-| taurus      | venus   | moon       | mars      | none    |
-| gemini      | mercury | none       | jupiter   | none    |
-| cancer      | moon    | jupiter    | saturn    | mars    |
-| leo         | sun     | none       | saturn    | none    |
-| virgo       | mercury | mercury    | jupiter   | venus   |
-| libra       | venus   | saturn     | mars      | sun     |
-| scorpio     | mars    | none       | venus     | moon    |
-| sagittarius | jupiter | none       | mercury   | none    |
-| capricorn   | saturn  | mars       | moon      | jupiter |
-| aquarius    | saturn  | none       | sun       | none    |
-| pisces      | jupiter | venus      | mercury   | mercury |
-
-* Links
-** [[https://vscodium.com][VSCodium]]
-It's basically VSCode but open-source
-and without the annoying Microsoft telemetry stuff.
-** org-mode
-Consider using an =org-mode= extension (for =.org= files). It's a nice alternative to =markdown=, which is pretty limited.

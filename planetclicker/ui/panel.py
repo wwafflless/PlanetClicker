@@ -1,4 +1,4 @@
-from planetclicker.ui.uielement import UIElement
+from planetclicker.ui.element import UIElement
 
 
 #   panel element, just a base ui element that has children, updates those children as well

@@ -17,7 +17,7 @@ class SceneManager:
         for scene in reversed(self.stack):
             print(f"\t{scene.name}")
 
-    def pop_scene(self):
+    def pop(self):
         """removes the top scene"""
         self.stack.pop()
 

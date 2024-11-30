@@ -27,29 +27,52 @@ RunMode = StrEnum("RunMode", ["development", "production"])
 
 def main(mode: RunMode = RunMode.development):
     size: Tuple[int, int] = Game.Graphics.size
-    clock: pygame.Clock = pygame.time.Clock()
+    clock: pygame.time.Clock = pygame.time.Clock()
     fps: int = Game.Graphics.fps
 
     screen = pygame.display.set_mode(size)
     scene_manager = SceneManager()
     scene_manager.push(TitleScene(scene_manager))
 
-    title_text = Game.Font.title.render(
-        text="game name",
-        antialias=False,
-        color=Game.Color.accent,
-    )
+    def handle_input():
+        filtered_events = []
+        pressed_keys = pygame.key.get_pressed()
+        for event in pygame.event.get():
+            quit_attempt = False
+            if event.type == pygame.QUIT:
+                quit_attempt = True
+            elif event.type == pygame.KEYDOWN:
+                alt_pressed = pressed_keys[pygame.K_LALT] or pressed_keys[pygame.K_RALT]
+                if event.key == pygame.K_ESCAPE:
+                    quit_attempt = True
+                elif event.key == pygame.K_F4 and alt_pressed:
+                    quit_attempt = True
+            if quit_attempt:
+                if scene_manager.is_empty():
+                    pygame.quit()
+                    return
+                else:
+                    scene_manager.pop()
+            else:
+                filtered_events.append(event)
 
-    while True:
-        """Update game state."""
+        scene_manager.handle_input(filtered_events, pressed_keys)
+
+    def update():
         scene_manager.update()
         delta = clock.tick(fps) / 1000
-        pressed_keys = pygame.key.get_pressed()
-        """Render graphics."""
-        scene_manager.render(screen)
-        screen.fill(Game.Color.background)
-        screen.blit(title_text, (0, 0))
+
+    def draw(surface: pygame.Surface):
+        surface.fill(Game.Color.background)
+        scene_manager.render(surface)
         pygame.display.flip()
+
+    while True:
+        handle_input()
+        update()
+        draw(screen)
+
+        # Event filtering
 
     # def handle_input(self, events, pressed_keys): ...
 

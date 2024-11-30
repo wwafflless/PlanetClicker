@@ -21,8 +21,8 @@ class MainScene(Scene):
         self.left_scene.update()
         self.right_scene.update()
 
-    def render(self, screen):
+    def render(self, surface):
         self.left_scene.render(self.left_surface)
         self.right_scene.render(self.right_surface)
-        screen.blit(self.right_surface, (400, 0))
-        screen.blit(self.left_surface, (0, 0))
+        surface.blit(self.right_surface, (400, 0))
+        surface.blit(self.left_surface, (0, 0))

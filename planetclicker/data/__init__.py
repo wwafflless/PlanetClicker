@@ -78,6 +78,7 @@ class Game(Namespace):
     Config = Namespace(**TOMLReader("data/config.toml").data)
     Settings = Namespace(**TOMLReader("data/settings.toml").data)
     Graphics = Namespace(**TOMLReader("data/graphics.toml").data)
+    UI = Namespace(**TOMLReader("data/ui.toml").data)
     Color = Namespace(**TOMLReader("data/color.toml").data)
     Font = Namespace(**FontReader("data/font.toml").fonts)
 

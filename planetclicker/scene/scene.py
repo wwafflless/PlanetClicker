@@ -28,5 +28,5 @@ class Scene:
     def update(self) -> None:
         raise Exception("not implemented")
 
-    def render(self, screen) -> None:
+    def render(self, surface: pygame.Surface) -> None:
         raise Exception("not implemented")

@@ -1,33 +1,29 @@
 
 # Table of Contents
 
-1.  [Project](#org59e961f)
-    1.  [Root](#org16ce9f0)
-2.  [Game](#org066b609)
-    1.  [Overview](#orgc96d584)
-    2.  [Team](#org60de0c8)
-    3.  [Gameplay](#org935f007)
-    4.  [Story](#orgd64e211)
-    5.  [Art and Aesthetics](#org3174104)
-    6.  [Sound and Music](#org59ec1ae)
-    7.  [Marketing and Release](#org684357e)
-    8.  [Post-Launch](#orge7fb754)
-    9.  [Miscellaneous](#org068f782)
-    10. [notes](#org16a2db1)
-3.  [Links](#orgb54cbe8)
-    1.  [VSCodium](#org1b99a9d)
-    2.  [org-mode](#org24cd079)
+1.  [Project](#org814b8b9)
+    1.  [Root](#org8cb8bfc)
+2.  [Game](#orgb7cf645)
+    1.  [Overview](#org59a7faa)
+    2.  [Team](#org3272f6c)
+    3.  [Gameplay](#org93289c6)
+    4.  [Story](#org3823c58)
+    5.  [Art and Aesthetics](#org4e356ac)
+    6.  [Sound and Music](#org35dac43)
+    7.  [Marketing and Release](#org381ad43)
+    8.  [Post-Launch](#orgdb58ca3)
+    9.  [Miscellaneous](#org4049a5d)
 
 
 
-<a id="org59e961f"></a>
+<a id="org814b8b9"></a>
 
 # TODO Project
 
 just an overall view of directory structure
 
 
-<a id="org16ce9f0"></a>
+<a id="org8cb8bfc"></a>
 
 ## Root
 
@@ -56,12 +52,12 @@ main source code for game
 2.  \`\_<sub>main</sub>\_<sub>.py</sub>\`
 
 
-<a id="org066b609"></a>
+<a id="orgb7cf645"></a>
 
 # Game
 
 
-<a id="orgc96d584"></a>
+<a id="org59a7faa"></a>
 
 ## Overview
 
@@ -102,7 +98,7 @@ main source code for game
 </table>
 
 
-<a id="org60de0c8"></a>
+<a id="org3272f6c"></a>
 
 ## Team
 
@@ -114,12 +110,13 @@ main source code for game
 
 <col  class="org-left" />
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="org-left">name</td>
-<td class="org-left">role</td>
+<th scope="col" class="org-left">name</th>
+<th scope="col" class="org-left">role</th>
 </tr>
-
+</thead>
+<tbody>
 <tr>
 <td class="org-left">adam</td>
 <td class="org-left">ice cream</td>
@@ -133,7 +130,7 @@ main source code for game
 </table>
 
 
-<a id="org935f007"></a>
+<a id="org93289c6"></a>
 
 ## Gameplay
 
@@ -180,7 +177,7 @@ Mention any leveling systems, skill trees, etc.
 -   Include any dynamic difficulty adjustments if applicable.
 
 
-<a id="orgd64e211"></a>
+<a id="org3823c58"></a>
 
 ## Story
 
@@ -201,7 +198,7 @@ Mention any leveling systems, skill trees, etc.
 -   Include a brief description and motivations for each character.
 
 
-<a id="org3174104"></a>
+<a id="org4e356ac"></a>
 
 ## Art and Aesthetics
 
@@ -224,7 +221,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   bright, colorful graphics, animations, and sound effects to provide immediate feedback and satisfaction from clicking or earning resources.
 
 
-<a id="org59ec1ae"></a>
+<a id="org35dac43"></a>
 
 ## Sound and Music
 
@@ -239,7 +236,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   Discuss themes or styles of music used throughout the game.
 
 
-<a id="org684357e"></a>
+<a id="org381ad43"></a>
 
 ## Marketing and Release
 
@@ -254,7 +251,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   Discuss the timeline for development, beta testing, and launch.
 
 
-<a id="orge7fb754"></a>
+<a id="orgdb58ca3"></a>
 
 ## Post-Launch
 
@@ -269,161 +266,9 @@ visual style (2D, 3D, pixel art, etc.)
 -   Describe how you will engage with players after release.
 
 
-<a id="org068f782"></a>
+<a id="org4049a5d"></a>
 
 ## TODO Miscellaneous
 
 -   Any additional notes, inspirations, or ideas that don&rsquo;t fit elsewhere.
-
-
-<a id="org16a2db1"></a>
-
-## notes
-
-
-### dignity
-
-stolen from western astrology
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">sign</th>
-<th scope="col" class="org-left">rules</th>
-<th scope="col" class="org-left">exaltation</th>
-<th scope="col" class="org-left">detriment</th>
-<th scope="col" class="org-left">fall</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">aries</td>
-<td class="org-left">mars</td>
-<td class="org-left">sun</td>
-<td class="org-left">venus</td>
-<td class="org-left">saturn</td>
-</tr>
-
-<tr>
-<td class="org-left">taurus</td>
-<td class="org-left">venus</td>
-<td class="org-left">moon</td>
-<td class="org-left">mars</td>
-<td class="org-left">none</td>
-</tr>
-
-<tr>
-<td class="org-left">gemini</td>
-<td class="org-left">mercury</td>
-<td class="org-left">none</td>
-<td class="org-left">jupiter</td>
-<td class="org-left">none</td>
-</tr>
-
-<tr>
-<td class="org-left">cancer</td>
-<td class="org-left">moon</td>
-<td class="org-left">jupiter</td>
-<td class="org-left">saturn</td>
-<td class="org-left">mars</td>
-</tr>
-
-<tr>
-<td class="org-left">leo</td>
-<td class="org-left">sun</td>
-<td class="org-left">none</td>
-<td class="org-left">saturn</td>
-<td class="org-left">none</td>
-</tr>
-
-<tr>
-<td class="org-left">virgo</td>
-<td class="org-left">mercury</td>
-<td class="org-left">mercury</td>
-<td class="org-left">jupiter</td>
-<td class="org-left">venus</td>
-</tr>
-
-<tr>
-<td class="org-left">libra</td>
-<td class="org-left">venus</td>
-<td class="org-left">saturn</td>
-<td class="org-left">mars</td>
-<td class="org-left">sun</td>
-</tr>
-
-<tr>
-<td class="org-left">scorpio</td>
-<td class="org-left">mars</td>
-<td class="org-left">none</td>
-<td class="org-left">venus</td>
-<td class="org-left">moon</td>
-</tr>
-
-<tr>
-<td class="org-left">sagittarius</td>
-<td class="org-left">jupiter</td>
-<td class="org-left">none</td>
-<td class="org-left">mercury</td>
-<td class="org-left">none</td>
-</tr>
-
-<tr>
-<td class="org-left">capricorn</td>
-<td class="org-left">saturn</td>
-<td class="org-left">mars</td>
-<td class="org-left">moon</td>
-<td class="org-left">jupiter</td>
-</tr>
-
-<tr>
-<td class="org-left">aquarius</td>
-<td class="org-left">saturn</td>
-<td class="org-left">none</td>
-<td class="org-left">sun</td>
-<td class="org-left">none</td>
-</tr>
-
-<tr>
-<td class="org-left">pisces</td>
-<td class="org-left">jupiter</td>
-<td class="org-left">venus</td>
-<td class="org-left">mercury</td>
-<td class="org-left">mercury</td>
-</tr>
-</tbody>
-</table>
-
-
-<a id="orgb54cbe8"></a>
-
-# Links
-
-
-<a id="org1b99a9d"></a>
-
-## [VSCodium](https://vscodium.com)
-
-It&rsquo;s basically VSCode but open-source
-and without the annoying Microsoft telemetry stuff.
-
-
-<a id="org24cd079"></a>
-
-## org-mode
-
-Consider using an `org-mode` extension (for `.org` files). It&rsquo;s a nice alternative to `markdown`, which is pretty limited.
 

@@ -5,10 +5,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Sun(Planet): ...
-
-
-@dataclass
 class SolarSystem:
     suns: dict
     planets: dict
