@@ -9,7 +9,7 @@
     let
       inherit (nixpkgs) lib;
 
-      project = pyproject-nix.lib.project.loadPyproject {
+      project = pyproject-nix.lib.project.loadPoetryPyproject {
         projectRoot = ./.;
       };
 
@@ -26,7 +26,14 @@
           pythonEnv = python.withPackages arg;
         in
         pkgs.mkShell {
-          packages = [ pythonEnv ];
+          packages = with pkgs;[
+            pythonEnv
+            #
+            uv
+            poetry
+            #
+
+          ];
           SDL_VIDEODRIVER = "wayland";
         };
 

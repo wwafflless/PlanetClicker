@@ -1,7 +1,5 @@
-from planetclicker.asset.color import Color
-from planetclicker.asset.font import text_font, title_font
-from planetclicker.data import settings
-from planetclicker.scene import Scene
+from planetclicker.data import Game
+from planetclicker.scene.scene import Scene
 
 
 class SettingsScene(Scene):
@@ -16,32 +14,36 @@ class SettingsScene(Scene):
     def __init__(self, manager):
         super().__init__("settings", manager)
         # for k, v in settings.items():
-        self.back_text = text_font.render(
+        self.back_text = Game.Font.text.render(
             text="Back",
             antialias=False,
-            color=Color.text,
+            color=Game.Color.text,
         )
-        self.title_text = title_font.render(
+        self.title_text = Game.Font.title.render(
             text="Settings",
             antialias=False,
-            color=Color.brand,
+            color=Game.Color.brand,
         )
         self.options = []
-        for section in settings.keys():
-            section_text = text_font.render(
+        for section in Game.Settings.all:
+            section_text = Game.Font.text.render(
                 text=section,
                 antialias=False,
-                color=Color.text,
+                color=Game.Color.text,
                 wraplength=500,
             )
-            for k, v in settings.get(section, {}).items():
-                option_text = text_font.render(
-                    text=f"{section}.{k}: {v}",
-                    antialias=False,
-                    color=Color.text,
-                    wraplength=500,
-                )
-                self.options.append((option_text, (100, 200 + 50 * len(self.options))))
+            # for k, v in settings.get(section, {}).items():
+            #     option_text = text_font.render(
+            #         text=f"{section}.{k}: {v}",
+            #         antialias=False,
+            #         color=GameColor.text,
+            #         wraplength=500,
+            #     )
+            #     self.options.append((option_text, (100, 200 + 50 * len(self.options))))
+            #
+            #
+            #
+            #
             # if isinstance(v, list):
             #     v = v[0]
             # option_text = text_font.render(

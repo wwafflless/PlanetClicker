@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pygame
 
-from planetclicker.scene import Scene
+from planetclicker.scene.scene import Scene
 from planetclicker.scene.clicker import ClickerScene
 from planetclicker.scene.planets import PlanetsScene
 

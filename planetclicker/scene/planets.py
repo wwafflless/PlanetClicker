@@ -2,10 +2,8 @@ from datetime import datetime
 
 import pygame
 
-from planetclicker.asset.font import text_font
-from planetclicker.data import data
-from planetclicker.scene import Scene
-from planetclicker.sprite.planet import PlanetSprite
+from planetclicker.data import Game
+from planetclicker.scene.scene import Scene
 
 
 class PlanetsScene(Scene):

@@ -1,5 +1,5 @@
 fps = 60
 dpi = 72
-resolution = [1280, 720]
 size = [1280, 720]
+resolution = [1280, 720]
 fullscreen = true

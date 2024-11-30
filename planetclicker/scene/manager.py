@@ -7,7 +7,7 @@ class SceneManager:
         """returns the top scene"""
         return self.stack[-1]
 
-    def push_scene(self, *scene):
+    def push(self, *scene):
         """adds scene to stack, set its manager to self"""
         self.print()
         self.stack.append(*scene)

@@ -2,7 +2,7 @@ import random
 
 import pygame
 
-from planetclicker.asset.color import Color
+from planetclicker.data import Game
 
 
 class BGStar:
@@ -19,7 +19,7 @@ class BGStar:
         self.y += self.dy / 10
 
     def draw(self, window):
-        self.surface.fill(Color.text)
+        self.surface.fill(Game.Color.text)
         window.blit(self.surface, (self.x, self.y))
 
 
@@ -41,8 +41,8 @@ class BGStarSystem:
             particle.x %= self.size[0]
             particle.y %= self.size[1]
 
-    def draw(self, window):
+    def draw(self, surface):
         self.surface.fill(pygame.SRCALPHA)
         for particle in self.particles:
             particle.draw(self.surface)
-        window.blit(self.surface, (0, 0))
+        surface.blit(self.surface, (0, 0))

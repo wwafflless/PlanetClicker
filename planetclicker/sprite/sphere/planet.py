@@ -5,9 +5,7 @@ from typing import Optional
 
 import numpy as np
 import pygame
-from planetclicker.asset.color import Color
-from planetclicker.asset.font import GameFont
-from planetclicker.data import data
+from planetclicker.data import Game
 from planetclicker.math.rotate import rotate_x, rotate_z
 from pygame.sprite import Sprite
 
@@ -19,7 +17,7 @@ class PlanetSprite(pygame.sprite.Sprite):
         self.radius = radius * 2
         self.speed = speed
         self.image = Sprite().image  # TODO FIXME
-        self.name_text = GameFont["text"].render(name, False, Color.text)
+        self.name_text = Game.Font.text.render(name, False, GameColor.text)
 
     def update(self):
         self.pos = rotate_z(self.pos, self.speed * 0.5)

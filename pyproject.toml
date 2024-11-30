@@ -1,25 +1,32 @@
 [project]
 name = "planetclicker"
 version = "0.0.1"
-description = "Clicker game."
-readme = "README.md"
-requires-python = ">=3.12"
-authors = [
-  {name = "Ben Kanter"},
-  {name = "Adam Neeley"}
-]
-dependencies = [
-  "behave",
-  "numpy",
-  "pygame_ce",
-  "pygame_gui",
-  "pytest",
-  "pytest-cov",
-  "toml",
-  "tomlkit",
-]
+
+[tool.poetry.scripts]
+main = "planetclicker:main"
+
 [project.urls]
 repository = "https://github.com/wwafflless/PlanetClicker"
+
+
+[tool.poetry]
+name = "planetclicker"
+version = "0.0.1"
+description = "Clicker game."
+readme = "README.md"
+# requires-python = ">=3.12"
+authors = [
+  "ben",
+  "adam",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+tomlkit = "^0.13.2"
+numpy = "^2.1.3"
+behave = "^1.2.6"
+pygame-ce = "^2.5.2"
+pytest = "^8.3.3"
 
 
 [build-system]
@@ -39,6 +46,3 @@ exclude = ["**/__pycache__"]
 executionEnvironments = [
   { root = "." },
 ]
-
-[project.scripts]
-main = "planetclicker.__main__:main"

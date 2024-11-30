@@ -1,9 +1,6 @@
 from dataclasses import dataclass
 
 
-import numpy as np
-
-
 @dataclass
 class Position:
     """A 3D Vector"""

@@ -1,7 +1,8 @@
+import pygame
+
+pygame.init()
 from planetclicker.data import Dev, Game
 import pprint
-
-import pygame
 
 
 def test_color():
@@ -10,9 +11,10 @@ def test_color():
 
 
 def test_font():
-    fonts = Game.Font.get("font")
+    fonts = Game.Font.fonts
     pprint.pp("hi")
     print(Game.Font)
+    pprint.pp(fonts)
 
 
 def test_dev():

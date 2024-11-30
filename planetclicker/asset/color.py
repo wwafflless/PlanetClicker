@@ -11,10 +11,13 @@ import pygame
 # Maximum Purple (#823982).
 
 
-class Color(SimpleNamespace):
-    black = pygame.Color("#111111")
-    white = pygame.Color("#eeeeee")
-    text = pygame.Color("#eeeeeeee")
-    background = pygame.Color("#221f59")
-    brand = pygame.Color("#e6bf73")
-    accent = pygame.Color("#2b7f94")
+from planetclicker.data import assets
+
+
+# class Color(SimpleNamespace):
+#     black = pygame.Color("#111111")
+#     white = pygame.Color("#eeeeee")
+#     text = pygame.Color("#eeeeeeee")
+#     background = pygame.Color("#221f59")
+#     brand = pygame.Color("#e6bf73")
+#     accent = pygame.Color("#2b7f94")

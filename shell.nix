@@ -12,6 +12,7 @@ mkShell {
     python312Packages.pygame-ce
     python312Packages.pygame-gui
     python312Packages.toml
+    python312Packages.tomlkit
   ];
   shellHook = ''
     export SDL_VIDEODRIVER=wayland

@@ -1,0 +1,9 @@
+version = 1
+
+[[distribution]]
+name = "planetclicker"
+version = "0.0.1"
+source = "directory+file:///home/adam/projects/PlanetClicker"
+
+[distribution.sdist]
+url = "file:///home/adam/projects/PlanetClicker"

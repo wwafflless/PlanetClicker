@@ -1,10 +1,8 @@
 import pygame
 
 from planetclicker.scene.manager import SceneManager
-from planetclicker.asset.color import Color
-from planetclicker.asset.font import GameFont
-from planetclicker.data import config
-from planetclicker.scene import Scene
+from planetclicker.data import Game, Dev
+from planetclicker.scene.scene import Scene
 from planetclicker.scene.main import MainScene
 from planetclicker.scene.settings import SettingsScene
 from planetclicker.sprite.circle.bg_star import BGStarSystem
@@ -26,15 +24,15 @@ class TitleScene(Scene):
             manager=manager,
         )
         self.particles = BGStarSystem(n=100)  # background animation
-        self.title_text = GameFont.title.render(
-            config.get("title"),
+        self.title_text = Game.Font.title.render(
+            Dev.Planets.get("title"),
             False,
-            Color.brand,
+            Game.Color.brand,
         )
-        self.instruction_text = GameFont.text.render(
+        self.instruction_text = Game.Font.text.render(
             "Press ENTER to start",
             False,
-            Color.accent,
+            Game.Color.accent,
         )
 
         self.buttons = [
@@ -78,7 +76,7 @@ class TitleScene(Scene):
         self.particles.update()
 
     def render(self, screen):
-        screen.fill(Color.background)
+        screen.fill(Game.Color.background)
         self.particles.draw(screen)
         title_rect = self.title_text.get_rect()
         instruction_rect = self.instruction_text.get_rect()
@@ -90,11 +88,13 @@ class TitleScene(Scene):
             ),
         )
         for i, button in enumerate(self.buttons):
-            color = Color.accent if button == self.selected_button else Color.text
+            color = (
+                Game.Color.accent if button == self.selected_button else Game.Color.text
+            )
             screen.blit(
-                GameFont.text.render(button.text, False, color),
+                Game.Font.text.render(button.text, False, color),
                 (
-                    self.rect.centerx - GameFont.text.size(button.text)[0] // 2,
+                    self.rect.centerx - Game.Font.text.size(button.text)[0] // 2,
                     self.rect.height // 2 + i * 20,
                 ),
             )
