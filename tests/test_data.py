@@ -1,7 +1,7 @@
 import pygame
 
 pygame.init()
-from planetclicker.data import Dev, Game
+from src.data import Dev, Game
 import pprint
 
 

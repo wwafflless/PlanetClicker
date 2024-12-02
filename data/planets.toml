@@ -2,51 +2,52 @@
 # planets
 ################################
 
-[[planets]]
+# [[planets]]
+name = "planet 1"
 color = "gold"
-radius = 15
-orbit_radius = 0
-speed = 0
-sprite = {type="sheet", name="orb_15", count=10, rect=[0, 0, 73, 73]}
-[[planets]]
-color = "silver"
-radius = 1
-orbit_radius = 80
-speed = 5
-sprite = {type="sheet", name="orb_14", count=10, rect=[0, 0, 46, 46]}
-[[planets]]
-color = "orange"
-radius = 3
-orbit_radius = 100
-speed = 3
-sprite = {type="sheet", name="orb_13", count=10, rect=[0, 0, 24, 24]}
-[[planets]]
-color = "green"
-radius = 4
-orbit_radius = 120
-speed = 3
-sprite = {type="sheet", name="orb_2", count=10, rect=[0, 0, 51, 51]}
-[[planets]]
-color = "brown"
-radius = 5
-orbit_radius = 130
-speed = 5
-sprite = {type="sheet", name="orb_5", count=10, rect=[0, 0, 15, 15]}
-[[planets]]
-color = "red"
-radius = 6
-orbit_radius = 150
-speed = 1
-sprite = {type="sheet", name="orb_11", count=10, rect=[0, 0, 45, 45]}
-[[planets]]
-color = "blue"
-radius = 9
-orbit_radius = 180
-speed = 0.8
-sprite = {type="sheet", name="orb_6", count=10, rect=[0, 0, 71, 71]}
-[[planets]]
-color = "black"
-radius = 10
-orbit_radius = 200
-speed = 0.5
-sprite = {type="sheet", name="orb_12", count=10, rect=[0, 0, 50, 50]}
+position = [0,0,0]
+velocity = [0,0,0]
+volume = [0,0,0]
+sprite = "orb_15"
+# [[planets]]
+# color = "silver"
+# radius = 1
+# orbit_radius = 80
+# speed = 5
+# sprite = {type="sheet", name="orb_14", count=10, rect=[0, 0, 46, 46]}
+# [[planets]]
+# color = "orange"
+# radius = 3
+# orbit_radius = 100
+# speed = 3
+# sprite = {type="sheet", name="orb_13", count=10, rect=[0, 0, 24, 24]}
+# [[planets]]
+# color = "green"
+# radius = 4
+# orbit_radius = 120
+# speed = 3
+# sprite = {type="sheet", name="orb_2", count=10, rect=[0, 0, 51, 51]}
+# [[planets]]
+# color = "brown"
+# radius = 5
+# orbit_radius = 130
+# speed = 5
+# sprite = {type="sheet", name="orb_5", count=10, rect=[0, 0, 15, 15]}
+# [[planets]]
+# color = "red"
+# radius = 6
+# orbit_radius = 150
+# speed = 1
+# sprite = {type="sheet", name="orb_11", count=10, rect=[0, 0, 45, 45]}
+# [[planets]]
+# color = "blue"
+# radius = 9
+# orbit_radius = 180
+# speed = 0.8
+# sprite = {type="sheet", name="orb_6", count=10, rect=[0, 0, 71, 71]}
+# [[planets]]
+# color = "black"
+# radius = 10
+# orbit_radius = 200
+# speed = 0.5
+# sprite = {type="sheet", name="orb_12", count=10, rect=[0, 0, 50, 50]}

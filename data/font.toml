@@ -1,7 +1,9 @@
-[title]
-name = "ThaleahFat.ttf"
+[[fonts]]
+name = "title"
+font = "ThaleahFat.ttf"
 size = 20
 
-[text]
-name = "PixelatedElegance.ttf"
+[[fonts]]
+name="text"
+font = "PixelatedElegance.ttf"
 size = 12
