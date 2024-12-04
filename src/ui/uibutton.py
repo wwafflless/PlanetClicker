@@ -18,8 +18,6 @@ class UIButton(UIElement):
         self.hovered = False
         self.callbacks = [None, None, None, None]
         
-        #   if you wish to change the color or text color after initializing a button
-        #   currently, change the draw_color or text_draw_color variables respectively
         self.draw_color = color
         self.selected_color = selected_color
         self.highlight_color = highlight_color

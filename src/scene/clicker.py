@@ -11,6 +11,8 @@ from src.sprite.planet import PlanetSprite
 from src.sprite.solar_system import SolarSystem
 from src.ui.panel import Panel
 from src.ui.uibutton import UIButton
+from src.ui.uielement import UIElement
+from src.ui.scrollrect import ScrollRect
 
 #   because I don't know how to use the data file yet
 ui_bg_color = (100, 100, 100, 155)
@@ -22,17 +24,17 @@ class ClickerScene(Scene):
         super().__init__("clicker", manager=None)
 
         # planets group
-        planets = []
+        self.planets = []
         for planet_name, planet_props in data["planet"].items():
-            planets.append(
-                PlanetSprite(
-                    name=planet_name,
-                    **planet_props,
-                )
-            )
-        self.solar_system = SolarSystem(planets)
+            new_planet = PlanetSprite(
+                             name=planet_name,
+                             **planet_props,
+                         )
+            new_planet.on_orbit = self.on_planet_orbit
+            self.planets.append(new_planet)
+        self.solar_system = SolarSystem([self.planets[0]])
         
-        self.panel_buttons = []
+        self.tab_buttons = []
         
         self.clicker_panel = Panel((0, 400), (800, 200), ui_bg_color)
         for i in range(4):
@@ -40,60 +42,92 @@ class ClickerScene(Scene):
             if i == 0:
                 label = "planets"
             next_button = UIButton((self.clicker_panel.pos[0] + (i * 200), self.clicker_panel.pos[1]), (200, 25), ui_unselected_color, label, (i==0), ui_highlight_color, (0, 0, 0, 0), ui_unselected_color)
-            next_button.link(2, self.panel_button_click)   # <-- ideally this 2 is an enum, I don't know how to best go about that in python sorry
+            next_button.link(2, self.tab_button_click)   # <-- ideally this 2 is an enum, I don't know how to best go about that in python sorry
             self.clicker_panel.add_child(next_button)
-            self.panel_buttons.append(next_button)
-        self.panel_buttons[0].selected = True
+            self.tab_buttons.append(next_button)
+        self.tab_buttons[0].selected = True
         
         self.tab_panels = []
-        self.tab_buttons = []
+        
+        self.planet_buttons = []
+        self.planet_labels = []
         
         for i in range(4):
-            new_tab = Panel((self.clicker_panel.pos[0],self.clicker_panel.pos[1] + self.panel_buttons[0].width_height[1]), (self.clicker_panel.width_height[0],self.clicker_panel.width_height[1] - self.panel_buttons[0].width_height[1]), (0, 0, 0, 0))
-            tab_button = UIButton((random.randint(0, 700), random.randint(450, 500)), (100, 100), (0, 255, 255, 255), "", True, (134, 255, 255, 255))
-            tab_button.link(2, self.tab_button_click)
-            self.tab_buttons.append(tab_button)
-            new_tab.add_child(tab_button)
+            new_tab = Panel((self.clicker_panel.pos[0],self.clicker_panel.pos[1] + self.tab_buttons[0].width_height[1]), (self.clicker_panel.width_height[0],375), (0, 0, 0, 0))
             self.tab_panels.append(new_tab)
+        
+        for i in range(5):
+            label_color = (134, 134, 134, 255)
+            if i==0: label_color = (255, 255, 255, 255)
+            planet_label = UIElement((self.tab_panels[0].pos[0] + 125, self.tab_panels[0].pos[1] + (75 * i) + 15), (100, 50), (0,0,0,0), "level: 0", (134, 134, 134, 255))
+            self.planet_labels.append(planet_label)            
+
+            #   i don't know how to use the data file, this is my workaround sorry!
+            planet_names = ["moon", "mercury", "venus", "earth", "mars", "jupiter", "saturn"]
+            
+            planet_button = UIButton((self.tab_panels[0].pos[0] + 25, self.tab_panels[0].pos[1] + (75 * i) + 15), (100, 50), (255, 255, 255, 255), planet_names[i], True, (220, 255, 255, 255))
+            planet_button.text_color = (0, 0, 0, 255)
+            planet_button.link(2, self.planet_button_click)
+            self.planet_buttons.append(planet_button)
+            
+            self.tab_panels[0].add_child(planet_button)
+            self.tab_panels[0].add_child(planet_label)
+    
+        self.tab_panels[0] = ScrollRect(self.tab_panels[0].pos, (self.clicker_panel.width_height[0],self.clicker_panel.width_height[1] - self.tab_buttons[0].width_height[1]), self.tab_panels[0])
         self.current_tab = self.tab_panels[0]
+
+        self.years = 0
+        self.year_label = UIElement((0, 10), (100, 25), (0,0,0,0), "years: " + str(self.years))
+        
+        self.planet_button_click(self.planet_buttons[0], None)
     
     #   makes them mutually exclusive
-    def panel_button_click(self, button, event):
-        for i in range(len(self.panel_buttons)):
-            if self.panel_buttons[i] == button:
+    def tab_button_click(self, button, event):
+        for i in range(len(self.tab_buttons)):
+            if self.tab_buttons[i] == button:
                 clicked_index = i
         
-        if not self.panel_buttons[clicked_index].selected:
-            for b in self.panel_buttons:
+        if not self.tab_buttons[clicked_index].selected:
+            for b in self.tab_buttons:
                 b.selected = False
             button.selected = True
             
             self.current_tab = self.tab_panels[clicked_index]
 
-    def tab_button_click(self, button, event):
-        for i in range(len(self.tab_buttons)):
-            if self.tab_buttons[i] == button:
+    def planet_button_click(self, button, event):
+        for i in range(len(self.planet_buttons)):
+            if self.planet_buttons[i] == button:
                 clicked_index = i
                
-        if clicked_index < 3:
-            panel_labels = ["planets", "zodiac", "stars", "your mom"]
-            self.panel_buttons[clicked_index+1].enable()
-            self.panel_buttons[clicked_index+1].label = panel_labels[clicked_index+1]
+        planet = self.planets[clicked_index + 1]
+        if not planet.enabled:
+            if clicked_index + 1 < len(self.planets):
+                self.planet_labels[clicked_index].text_color = (255, 255, 255, 255)
+                planet.enabled = True
+                planet.value = 1
+                self.solar_system.add_planet(self.planets[clicked_index + 1])
+        else:
+            planet.value += 1
 
-        test_texts = ["Adam, don't click me.", "Adam, leave me alone please.", "Seriously, Adam, stop.", "You clicked me, I get it!"]
-        print(test_texts[random.randint(0, len(test_texts)-1)])
+    def on_planet_orbit(self, planet, value):
+        self.years += value
 
     def handle_input(self, events, pressed_keys):
         self.current_tab.handle_input(events, pressed_keys)
         self.clicker_panel.handle_input(events, pressed_keys)
 
     def update(self):
+        for i in range(len(self.planet_labels)):
+            self.planet_labels[i].label = "level: " + str(self.planets[i+1].value)
+
         self.current_tab.update()
         self.clicker_panel.update()
         self.solar_system.update()
+        self.year_label.label = "years: " + str(self.years)
 
     def render(self, screen):
         screen.fill(Color.black)
         self.solar_system.draw(screen)
         self.clicker_panel.draw(screen)
         self.current_tab.draw(screen)
+        self.year_label.draw(screen)

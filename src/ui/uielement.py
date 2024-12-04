@@ -18,6 +18,9 @@ class UIElement():
         self.test_text = text_font.render(label, False, text_color)
         self.test_text.set_alpha(text_color[3])
     
+    def move(self, to_move):
+        self.pos = (self.pos[0] + to_move[0], self.pos[1] + to_move[1])
+
     def update(self):
         pass
         

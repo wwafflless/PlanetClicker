@@ -9,8 +9,20 @@ from src.sprite.planet import PlanetSprite
 
 class SolarSystem:
     def __init__(self, planets: list[PlanetSprite]):
-        self.planets = planets
+        self.planets = []
+        for planet in planets:
+            self.add_planet(planet)
         self.bg_stars = BGStarSystem(100)
+
+    def add_planet(self, to_add):
+        shouldAdd = True
+        for planet in self.planets:
+            if planet == to_add:
+                shouldAdd = False
+                break;
+        
+        if shouldAdd:
+            self.planets.append(to_add)
 
     def update(self):
         self.bg_stars.update()

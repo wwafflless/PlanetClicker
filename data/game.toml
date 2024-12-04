@@ -38,7 +38,7 @@
     color = "orange"
     radius = 3
     orbit_radius = 100
-    speed = 3
+    speed = 1
 [planet.venus]
     color = "green"
     radius = 4

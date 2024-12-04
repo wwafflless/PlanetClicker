@@ -1,4 +1,6 @@
+from asyncio.windows_events import NULL
 import math
+from re import I, S
 
 import numpy
 import numpy as np
@@ -18,6 +20,12 @@ class PlanetSprite(pygame.sprite.Sprite):
         self.radius = radius * 2
         self.speed = speed
         self.image = planet_images[name]
+        
+        self.leftSide = False
+        self.enabled = False
+
+        self.value = 0
+        self.on_orbit = NULL
 
     def update(self):
         self.pos = rotate_z(self.pos, self.speed * 0.5)
@@ -27,6 +35,13 @@ class PlanetSprite(pygame.sprite.Sprite):
             (self.pos[0] - self.radius, self.pos[1] - self.radius),
             (size, size),
         )
+        
+        if not self.leftSide and self.pos[0] < 0:
+            self.leftSide = True
+        elif self.leftSide and self.pos[0] > 0:
+            if self.on_orbit != NULL:
+                self.on_orbit(self, self.value)
+            self.leftSide = False
 
     def draw(self, surface):
         pos = rotate_x(self.pos, 80)
