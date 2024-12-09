@@ -1,29 +1,29 @@
 
 # Table of Contents
 
-1.  [Project](#org814b8b9)
-    1.  [Root](#org8cb8bfc)
-2.  [Game](#orgb7cf645)
-    1.  [Overview](#org59a7faa)
-    2.  [Team](#org3272f6c)
-    3.  [Gameplay](#org93289c6)
-    4.  [Story](#org3823c58)
-    5.  [Art and Aesthetics](#org4e356ac)
-    6.  [Sound and Music](#org35dac43)
-    7.  [Marketing and Release](#org381ad43)
-    8.  [Post-Launch](#orgdb58ca3)
-    9.  [Miscellaneous](#org4049a5d)
+1.  [Project](#org591d698)
+    1.  [Root](#orgee01398)
+2.  [Game](#orged37c00)
+    1.  [Overview](#orgdc568d1)
+    2.  [Team](#org29352f6)
+    3.  [Gameplay](#org8476bae)
+    4.  [Story](#org9cc066f)
+    5.  [Art and Aesthetics](#org884903b)
+    6.  [Sound and Music](#org7829256)
+    7.  [Marketing and Release](#org25e2ca1)
+    8.  [Post-Launch](#org0648bf8)
+    9.  [Miscellaneous](#orgeaf8c8b)
 
 
 
-<a id="org814b8b9"></a>
+<a id="org591d698"></a>
 
 # TODO Project
 
 just an overall view of directory structure
 
 
-<a id="org8cb8bfc"></a>
+<a id="orgee01398"></a>
 
 ## Root
 
@@ -52,12 +52,12 @@ main source code for game
 2.  \`\_<sub>main</sub>\_<sub>.py</sub>\`
 
 
-<a id="orgb7cf645"></a>
+<a id="orged37c00"></a>
 
 # Game
 
 
-<a id="org59a7faa"></a>
+<a id="orgdc568d1"></a>
 
 ## Overview
 
@@ -98,7 +98,7 @@ main source code for game
 </table>
 
 
-<a id="org3272f6c"></a>
+<a id="org29352f6"></a>
 
 ## Team
 
@@ -130,7 +130,7 @@ main source code for game
 </table>
 
 
-<a id="org93289c6"></a>
+<a id="org8476bae"></a>
 
 ## Gameplay
 
@@ -177,7 +177,7 @@ Mention any leveling systems, skill trees, etc.
 -   Include any dynamic difficulty adjustments if applicable.
 
 
-<a id="org3823c58"></a>
+<a id="org9cc066f"></a>
 
 ## Story
 
@@ -198,7 +198,7 @@ Mention any leveling systems, skill trees, etc.
 -   Include a brief description and motivations for each character.
 
 
-<a id="org4e356ac"></a>
+<a id="org884903b"></a>
 
 ## Art and Aesthetics
 
@@ -221,7 +221,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   bright, colorful graphics, animations, and sound effects to provide immediate feedback and satisfaction from clicking or earning resources.
 
 
-<a id="org35dac43"></a>
+<a id="org7829256"></a>
 
 ## Sound and Music
 
@@ -236,7 +236,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   Discuss themes or styles of music used throughout the game.
 
 
-<a id="org381ad43"></a>
+<a id="org25e2ca1"></a>
 
 ## Marketing and Release
 
@@ -251,7 +251,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   Discuss the timeline for development, beta testing, and launch.
 
 
-<a id="orgdb58ca3"></a>
+<a id="org0648bf8"></a>
 
 ## Post-Launch
 
@@ -266,7 +266,7 @@ visual style (2D, 3D, pixel art, etc.)
 -   Describe how you will engage with players after release.
 
 
-<a id="org4049a5d"></a>
+<a id="orgeaf8c8b"></a>
 
 ## TODO Miscellaneous
 

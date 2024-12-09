@@ -16,7 +16,7 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
-      python = pkgs.python312;
+      python = pkgs.python311;
 
     in
     {
@@ -31,6 +31,7 @@
             #
             uv
             poetry
+            python3Packages.pygame
             #
 
           ];

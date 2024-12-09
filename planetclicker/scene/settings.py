@@ -1,4 +1,3 @@
-from planetclicker.data import Game
 from planetclicker.scene.scene import Scene
 
 

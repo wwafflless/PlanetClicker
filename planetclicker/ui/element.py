@@ -1,9 +1,9 @@
 import pygame
 
-from planetclicker.data import Game
+from planetclicker.settings import Settings
+from planetclicker.font import TextFont
 
 
-#   base ui element, has a position, size, color, and label
 class UIElement:
     def __init__(
         self, pos, width_height, color=None, label="", text_color=(255, 255, 255, 255)
@@ -18,7 +18,7 @@ class UIElement:
         self.label = label
         self.text_color = text_color
 
-        self.test_text = Game.Font.text.render(label, False, text_color)
+        self.test_text = TextFont.render(label, False, text_color)
         self.test_text.set_alpha(text_color[3])
 
     def update(self):
@@ -36,7 +36,7 @@ class UIElement:
         surface.blit(subsurface, self.pos)
 
         #   rerender in case label or text color change
-        self.test_text = Game.Font.text.render(self.label, False, self.text_color)
+        self.test_text = TextFont.render(self.label, False, self.text_color)
         self.test_text.set_alpha(self.text_color[3])
 
         text_width = self.test_text.get_width()

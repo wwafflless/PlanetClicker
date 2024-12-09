@@ -1,9 +1,0 @@
-[[fonts]]
-name = "title"
-font = "ThaleahFat.ttf"
-size = 20
-
-[[fonts]]
-name="text"
-font = "PixelatedElegance.ttf"
-size = 12

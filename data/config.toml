@@ -1,6 +1,0 @@
-difficulty = "easy"
-timezone = 'pst'
-language = 'en-us'
-
-[ui]
-window_title= "Planet Clicker"

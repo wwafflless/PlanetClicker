@@ -3,30 +3,53 @@
 #+description: A game about looking at the stars
 #+options: toc:2
 
-* TODO Project
-just an overall view of directory structure
-** Root
-*** assets
-+ images
-+ sounds
-+ etc
-*** data
-+ game data
-+ save states
-+ settings
-+ config
-*** planetclicker
-main source code for game
-**** `__init__.py`
-**** `__main__.py`
+/This document is thoroughly unfinished./
 
+* Project
+** [[./asset][assets]]
++ [[./asset/font][fonts]]
++ [[./asset/sheet][sprite sheets]]
++ [[./asset/sprite][sprites]]
+** [[./planetclicker][planetclicker]]
+*** asset
++ color
++ font
++ planet
++ sprite
+*** data
+*** math
+*** model
+*** scene
+*** sprite
+*** ui
+*** command.py
+*** game.py
+*** logger.py
+settings.py
+__init__.py
+__main__.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** [[./tests/][tests]]
 * Game
 ** Overview
-| title     | Planet Clicker                    |
-| genres    | clicker, idler, strategy          |
-| platforms | steam (win, mac, linux), android? |
-| audiences | casual                            |
-| summary   | ?                                 |
+| title     | Planet Clicker           |
+| genres    | clicker, idler, strategy |
+| audiences | casual                   |
 ** Team
 | name | role        |
 |------+-------------|
@@ -37,15 +60,14 @@ main source code for game
 /Describe the main mechanics that players will engage with./
 /Highlight what makes these mechanics unique./
 
-+ start by clicking to generate *mana*
-  + have a resource counter that tracks mana
-+ purchase planets/etc
-  + *planets* can automatically generate mana
-+ upgrade sun, planets, click, etc
++ click to generate *mana*
+  + resource counter that tracks mana
++ purchase planets upgrades
++ passively generate mana
   + sun can be upgraded to reduce cycle time (how long takes each planet to generate mana)
   + planets can be upgraded in various ways
   + click can be upgraded to increase the amount of resources obtained per click or over time.
-+ unlock new areas, abilities, etc?
++ unlock new areas, abilities, features
 + occasionally waves of enemies may spawn
 + player can purchase items such as new suns, skins, etc
 *** Strategy

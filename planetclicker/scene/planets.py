@@ -2,7 +2,6 @@ from datetime import datetime
 
 import pygame
 
-from planetclicker.data import Game
 from planetclicker.scene.scene import Scene
 
 
@@ -14,5 +13,5 @@ class PlanetsScene(Scene):
 
     def update(self): ...
 
-    def render(self, screen):
-        screen.fill((0, 0, 0))
+    def render(self, surface: pygame.Surface):
+        surface.fill((0, 0, 0))

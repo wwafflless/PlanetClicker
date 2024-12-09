@@ -1,12 +1,10 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional
 
 import numpy as np
 import pygame
 from planetclicker.data import Game
-from planetclicker.math.rotate import rotate_x, rotate_z
+from planetclicker.math import rotate_x, rotate_z
 from pygame.sprite import Sprite
 
 

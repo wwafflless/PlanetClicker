@@ -1,5 +1,7 @@
 import pygame
 
+from planetclicker import color
+
 pygame.init()
 import pytest
 from planetclicker.data import Game
@@ -19,7 +21,7 @@ def test_sheet():
     rect = image_0.get_rect()
     rect.topleft = (0, 0)
     while True:
-        screen.fill(Game.Color.black, (0, 0, 400, 300))
+        screen.fill(color.black, (0, 0, 400, 300))
         for img in image_strip:
             screen.blit(img, rect)
         pygame.display.flip()
@@ -35,7 +37,7 @@ def test_animated_sprite():
     )
     hi_txt = Game.Font.title.render("HELLO", False, Game.Color.white)
     while True:
-        screen.fill(Game.Color.background, (0, 0, 400, 300))
+        screen.fill(color.background, (0, 0, 400, 300))
         sprite.update()
         screen.blit(sprite.current_image, sprite.current_rect)
         screen.blit(hi_txt, screen.get_rect().center)

@@ -1,11 +1,13 @@
 import pygame
 
-from planetclicker.data import Game
+from planetclicker import color
+from planetclicker.scene.manager import SceneManager
 from planetclicker.sprite.bg_star import BGStarSystem
 from planetclicker.scene.scene import Scene
 from planetclicker.scene.main import MainScene
 from planetclicker.scene.settings import SettingsScene
 from planetclicker.ui.button import UIButton
+from planetclicker.font import TitleFont, TextFont
 
 
 class TitleScene(Scene):
@@ -17,33 +19,32 @@ class TitleScene(Scene):
     - Settings
     """
 
-    def __init__(self, manager):
+    def __init__(self):
         super().__init__(
             name="title",
-            manager=manager,
         )
         self.particles = BGStarSystem(n=100)  # background animation
-        self.title_text = Game.Font.title.render(
-            Game.UI.title,
-            False,
-            Game.Color.brand,
+        self.title_text = TitleFont.render(
+            text="Planet Clicker",
+            antialias=False,
+            color=color.brand,
         )
-        self.instruction_text = Game.Font.text.render(
+        self.instruction_text = TextFont.render(
             "press ENTER to start",
             False,
-            Game.Color.brand,
+            color.brand,
         )
 
-        button_data: list[dict] = Game.UI.button
+        button_texts = ["continue", "new game", "load game", "settings"]
 
         self.buttons = []
         self.selected_button_index = 0
-        for i in range(len(button_data)):
+        for i in range(len(button_texts)):
             new_button = UIButton(
                 (400 - (75 / 2), 250 + (i * 30)),
                 (75, 25),
                 (255, 255, 255, 255),
-                button_data[i]["text"],
+                button_texts[i],
                 True,
                 (43, 127, 148, 255),
                 (0, 0, 0, 0),
@@ -62,7 +63,7 @@ class TitleScene(Scene):
 
         destinations = [MainScene, MainScene, MainScene, SettingsScene]
 
-        self.manager.push(destinations[self.selected_button_index](self.manager))
+        SceneManager().push(destinations[self.selected_button_index]())
 
     def handle_input(self, events, pressed_keys):
         for b in self.buttons:
@@ -89,11 +90,11 @@ class TitleScene(Scene):
         for b in self.buttons:
             b.update()
 
-    def render(self, screen):
-        screen.fill(Game.Color.background)
-        self.particles.draw(screen)
+    def render(self, surface: pygame.Surface):
+        surface.fill(color.background)
+        self.particles.draw(surface)
         title_rect = self.title_text.get_rect()
-        screen.blit(
+        surface.blit(
             self.title_text,
             (
                 self.rect.centerx - title_rect.centerx,
@@ -101,7 +102,7 @@ class TitleScene(Scene):
             ),
         )
         for b in self.buttons:
-            b.draw(screen)
+            b.draw(surface)
         """
         for i, button in enumerate(self.buttons):
             color = Color.accent if button == self.selected_button else Color.text
