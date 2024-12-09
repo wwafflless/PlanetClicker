@@ -29,11 +29,6 @@ class TitleScene(Scene):
             # antialias=False,
             color=Colors.brand,
         )
-        self.instruction_text = TextFont.render(
-            "press ENTER to start",
-            False,
-            Colors.brand,
-        )
 
         button_texts = [
             # "continue",
@@ -86,19 +81,19 @@ class TitleScene(Scene):
                     self.click_button(self.selected_button, event)
                     break
 
-            match (event.type):
-                case pygame.KEYDOWN:
-                    match event.key:
-                        case pygame.K_UP:
-                            print("pressed up")
-                            self.selected_button_index -= 1
-                            self.selected_button_index %= len(self.buttons)
-                            break
-                        case pygame.K_DOWN:
-                            self.selected_button_index += 1
-                            self.selected_button_index %= len(self.buttons)
-                            self.buttons[self.selected_button_index]
-                            break
+            # match (event.type):
+            #     case pygame.KEYDOWN:
+            #         match event.key:
+            #             case pygame.K_UP:
+            #                 print("pressed up")
+            #                 self.selected_button_index -= 1
+            #                 self.selected_button_index %= len(self.buttons)
+            #                 break
+            #             case pygame.K_DOWN:
+            #                 self.selected_button_index += 1
+            #                 self.selected_button_index %= len(self.buttons)
+            #                 self.buttons[self.selected_button_index]
+            #                 break
 
     @property
     def selected_button(self):

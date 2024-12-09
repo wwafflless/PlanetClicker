@@ -1,3 +1,4 @@
+from pygame import Surface
 from planetclicker.scene import Scene
 
 
@@ -11,6 +12,14 @@ class SceneManager:
         self.stack = []
         for scene in scenes:
             self.push(scene)
+        self._log = []
+
+    @property
+    def log(self):
+        return reversed(self._log)
+
+    def add_log(self, val: str):
+        self._log.append(val)
 
     @property
     def top(self):
@@ -21,8 +30,8 @@ class SceneManager:
 
     def push(self, scene: Scene):
         """adds scene to stack, set its manager to self"""
-        # scene.manager = self # do we need this?
         self.stack.append(scene)
+        self.add_log("added scene: %s" % scene.name)
 
     def print(self):
         print("SceneManager stack:")
@@ -42,5 +51,5 @@ class SceneManager:
     def update(self):
         self.top.update()
 
-    def render(self, screen) -> None:
+    def render(self, screen: Surface) -> None:
         self.top.render(screen)

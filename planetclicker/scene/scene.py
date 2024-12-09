@@ -26,10 +26,10 @@ class Scene:
         self.next = None
 
     def handle_input(self, events, pressed_keys) -> None:
-        raise Exception("not implemented")
+        raise Exception("handle_input not implemented")
 
     def update(self) -> None:
-        raise Exception("not implemented")
+        raise Exception("update not implemented")
 
     def render(self, surface: pygame.Surface) -> None:
-        raise Exception("not implemented")
+        raise Exception("render not implemented")

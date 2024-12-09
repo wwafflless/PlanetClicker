@@ -7,7 +7,7 @@ from planetclicker.scene.scene import Scene
 
 class PlanetsScene(Scene):
     def __init__(self):
-        super().__init__("planets", None)
+        super().__init__("planets")
 
     def handle_input(self, events, pressed_keys): ...
 

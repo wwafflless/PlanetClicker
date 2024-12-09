@@ -1,5 +1,5 @@
-from pygame.surface import Surface
 import pygame
+from planetclicker import Colors
 from planetclicker.font import TextFont
 from planetclicker.scene.scene import Scene
 from planetclicker.model.solar_system import SolarSystem, Sun, Planet
@@ -8,9 +8,9 @@ from planetclicker.sprite.animated_sprite import AnimatedSprite
 
 class ClickerScene(Scene):
     def __init__(self):
-        super().__init__("clicker", game=None)
+        super().__init__("clicker")
 
-        self.test_text = TextFont.render("welcome_text", False, (255, 255, 255))
+        self.test_text = TextFont.render("welcome_text")
 
         self.solar_system = SolarSystem.simple()
 
@@ -38,12 +38,11 @@ class ClickerScene(Scene):
     def handle_input(self, events, pressed_keys): ...
 
     def update(self):
-        for p in self.solar_system.planets:
-            p.sprite.update()
+        self.solar_system.update()
 
     def render(self, surface: pygame.Surface):
-        # surface.fill(Game.Color.black)
-        # surface.blit(self.test_text, (0, 0))
-        self.solar_system.draw(surface)
+        surface.fill(Colors.black)
+        surface.blit(self.test_text, (0, 0))
+        self.solar_system.sprite.draw(surface)
         for p in self.solar_system.planets:
             p.sprite.draw(surface)

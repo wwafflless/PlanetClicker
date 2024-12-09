@@ -1,7 +1,6 @@
 from enum import Enum, StrEnum
 from datetime import datetime
 from planetclicker.color import Colors
-from types import SimpleNamespace
 from planetclicker import color
 
 import pygame
@@ -23,7 +22,7 @@ GameState = StrEnum("GameState", ["Loading", "Running", "Quitting"])
 
 
 class Game:
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((800, 600), RESIZABLE)
     manager = SceneManager()
 
     def __init__(self, debug=False):
@@ -54,12 +53,22 @@ class Game:
             K_d: ToggleDebug(self),
         }
         for event in pygame.event.get():
+            if event.type == WINDOWRESIZED:
+                print(event.x)
+                pygame.display.update()
+            # # recreate screen object required for pygame version 1
+            # screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
+            # TODO: resize image if needed
+            # center_pos = (width // 2, height // 2)
+            # self.running = False
             if event.type == QUIT:
                 self.running = False
             elif event.type == KEYDOWN:
                 key = event.key
                 if key in keybinds:
                     keybinds[key].execute()
+            else:
+                filtered_events.append(event)
 
         self.manager.handle_input(filtered_events, pressed_keys)
 
@@ -90,9 +99,8 @@ d        Toggle Debug
             )
             self.screen.blit(keys, (5, 500))
             keys = DebugFont.render(
-                f"""log
-            """,
+                "log\n" + "\n".join(self.manager.log),
                 color=Colors.text,
             )
-            self.screen.blit(keys, (500, 500))
+            self.screen.blit(keys, (400, 350))
         pygame.display.flip()
