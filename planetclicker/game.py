@@ -76,14 +76,23 @@ class Game:
 state:   {self.state}
 fps:     {fps:.2f}
 time:    {datetime.now()}
-            """
+            """,
+                color=Colors.debug,
             )
             self.screen.blit(info, (5, 5))
             keys = DebugFont.render(
-                f"""keys
-                todo
+                f"""
+key      command
+ESC      QuitGame
+d        Toggle Debug
             """,
                 color=Colors.green,
             )
             self.screen.blit(keys, (5, 500))
+            keys = DebugFont.render(
+                f"""log
+            """,
+                color=Colors.text,
+            )
+            self.screen.blit(keys, (500, 500))
         pygame.display.flip()
