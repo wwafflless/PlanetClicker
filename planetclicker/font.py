@@ -1,4 +1,5 @@
 from __future__ import annotations
+from planetclicker.color import Colors
 from pygame.surface import Surface
 import pygame
 import os
@@ -7,24 +8,27 @@ from dataclasses import dataclass
 from typing import Self
 
 
-@dataclass
-class Font:
-    font: pygame.font.Font
-    _size: int = 12
+class Font(pygame.font.Font):
+    """A simple font class that uses Pygame's built-in font rendering."""
 
-    @classmethod
-    def load(cls, name: str):
-        font_path = os.path.join("asset", "font", f"{name}.ttf")
-        font = pygame.font.Font(font_path)
-        return cls(font)
+    def __init__(
+        self,
+        font_name,
+        font_size,
+    ):
+        self.font_path = os.path.join("asset", "font", f"{font_name}.ttf")
+        super(Font, self).__init__(self.font_path, font_size)
 
-    def size(self, size: int) -> Font:
-        self._size = size
-        return self
+    def render(
+        self,
+        text: str,
+        antialias: bool = True,
+        color=Colors.debug,
+    ) -> Surface:
+        """Render a text string onto a new surface."""
+        return super().render(text, antialias, color)
 
-    def render(self, *args, **kwargs) -> Surface:
-        return self.font.render(*args, **kwargs)
 
-
-TitleFont = Font.load("ThaleahFat").size(20)
-TextFont = Font.load("ThaleahFat").size(12)
+TitleFont = Font("ThaleahFat", 64)
+TextFont = Font("ThaleahFat", 32)
+DebugFont = Font("RobotoMono-Regular", 12)

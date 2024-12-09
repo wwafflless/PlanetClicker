@@ -4,14 +4,11 @@ import pygame
 
 pygame.init()
 
-from planetclicker import DEBUG
 from planetclicker.game import Game
 
 
 def main():
-    if DEBUG:
-        print("Starting Game from main()")
-    game = Game()
+    game = Game(debug=True)
     game.run()
 
 

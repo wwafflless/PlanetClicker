@@ -15,7 +15,7 @@ class MainScene(Scene):
         self.left_surface = pygame.Surface((800, 600))
         self.right_surface = pygame.Surface((400, 600))
 
-    def handle_input(self, events, pressed_keys): ...
+    # def handle_input(self, events, pressed_keys): ...
 
     def update(self):
         self.left_scene.update()

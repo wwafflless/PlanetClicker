@@ -26,7 +26,7 @@ class Scene:
         self.next = None
 
     def handle_input(self, events, pressed_keys) -> None:
-        pass
+        raise Exception("not implemented")
 
     def update(self) -> None:
         raise Exception("not implemented")

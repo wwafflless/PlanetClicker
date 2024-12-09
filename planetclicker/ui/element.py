@@ -24,8 +24,8 @@ class UIElement:
     def update(self):
         pass
 
-    def handle_input(self, events, pressed_keys):
-        pass
+    # def handle_input(self, events, pressed_keys):
+    # pass
 
     def draw(self, surface):
         #   subsurface to support transparency

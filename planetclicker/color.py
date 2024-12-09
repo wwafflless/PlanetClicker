@@ -3,6 +3,7 @@ from types import SimpleNamespace
 
 class Colors(SimpleNamespace):
     background = "#221f59"
+    debug = "#ff00ff"
     text = "#f0f0f0"
     black = "#111111"
     white = "#eeeeee"

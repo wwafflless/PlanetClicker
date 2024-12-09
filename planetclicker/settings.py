@@ -4,6 +4,8 @@ from types import NoneType, SimpleNamespace
 from typing import List, Optional, Self, Union
 from dataclasses import dataclass
 
+from planetclicker.util import singleton
+
 SettingValue = (
     int
     | float
@@ -28,14 +30,16 @@ class SettingGroup:
     def __init__(self, *settings: Setting):
         self.settings = settings
 
-    def __getattr__(self, name) -> SettingValue:
+    def __getattr__(self, name: str) -> SettingValue:
         for setting in self.settings:
             if setting.name == name:
                 return setting.value
         raise AttributeError(f"No setting found with name '{name}'")
 
 
-class Settings(SimpleNamespace):
+@singleton
+@dataclass
+class Settings:
     UI = SettingGroup(
         Setting(
             "language",

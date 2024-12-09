@@ -1,17 +1,11 @@
 from planetclicker.scene import Scene
 
 
-from planetclicker import DEBUG
+from planetclicker.util import singleton
 
 
-class SingletonClass:
-    def __new__(cls, *args):
-        if not hasattr(cls, "instance"):
-            cls.instance = super(SingletonClass, cls).__new__(cls)
-        return cls.instance
-
-
-class SceneManager(SingletonClass):
+@singleton
+class SceneManager:
 
     def __init__(self, *scenes: Scene) -> None:
         self.stack = []
@@ -19,7 +13,7 @@ class SceneManager(SingletonClass):
             self.push(scene)
 
     @property
-    def scene(self):
+    def top(self):
         """returns the top scene"""
         if self.stack:
             return self.stack[-1]
@@ -40,13 +34,13 @@ class SceneManager(SingletonClass):
         self.stack.pop()
 
     def handle_input(self, events, pressed_keys) -> None:
-        self.scene.handle_input(events, pressed_keys)
+        self.top.handle_input(events, pressed_keys)
 
     def is_empty(self) -> bool:
         return len(self.stack) == 0
 
     def update(self):
-        self.scene.update()
+        self.top.update()
 
     def render(self, screen) -> None:
-        self.scene.render(screen)
+        self.top.render(screen)

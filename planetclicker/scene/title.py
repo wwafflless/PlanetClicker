@@ -26,7 +26,7 @@ class TitleScene(Scene):
         self.particles = BGStarSystem(n=100)  # background animation
         self.title_text = TitleFont.render(
             text="Planet Clicker",
-            antialias=False,
+            # antialias=False,
             color=Colors.brand,
         )
         self.instruction_text = TextFont.render(
@@ -35,7 +35,12 @@ class TitleScene(Scene):
             Colors.brand,
         )
 
-        button_texts = ["continue", "new game", "load game", "settings"]
+        button_texts = [
+            # "continue",
+            "new game",
+            # "load game",
+            "settings",
+        ]
 
         self.buttons = []
         self.selected_button_index = 0
@@ -61,7 +66,12 @@ class TitleScene(Scene):
                 self.selected_button_index = i
                 break
 
-        destinations = [MainScene, MainScene, MainScene, SettingsScene]
+        destinations = [
+            # MainScene,
+            MainScene,
+            # MainScene,
+            SettingsScene,
+        ]
 
         SceneManager().push(destinations[self.selected_button_index]())
 
@@ -70,16 +80,25 @@ class TitleScene(Scene):
             b.handle_input(events, pressed_keys)
 
         for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    print("pressed enter")
+                    self.click_button(self.selected_button, event)
+                    break
+
             match (event.type):
-                case pygame.K_UP:
-                    self.selected_button_index -= 1
-                    self.selected_button_index %= len(self.buttons)
-                    break
-                case pygame.K_DOWN:
-                    self.selected_button_index += 1
-                    self.selected_button_index %= len(self.buttons)
-                    self.buttons[self.selected_button_index]
-                    break
+                case pygame.KEYDOWN:
+                    match event.key:
+                        case pygame.K_UP:
+                            print("pressed up")
+                            self.selected_button_index -= 1
+                            self.selected_button_index %= len(self.buttons)
+                            break
+                        case pygame.K_DOWN:
+                            self.selected_button_index += 1
+                            self.selected_button_index %= len(self.buttons)
+                            self.buttons[self.selected_button_index]
+                            break
 
     @property
     def selected_button(self):
@@ -91,7 +110,7 @@ class TitleScene(Scene):
             b.update()
 
     def render(self, surface: pygame.Surface):
-        surface.fill(color.background)
+        surface.fill(Colors.background)
         self.particles.draw(surface)
         title_rect = self.title_text.get_rect()
         surface.blit(
