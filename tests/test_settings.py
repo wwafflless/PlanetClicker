@@ -1,6 +1,6 @@
-from planetclicker.settings import Settings
+from planetclicker.settings import settings
 
 
 def test_setting():
-    gs = Settings()
-    assert gs.Graphics.fps == 30.0
+    lang = settings.gets("ui", "lang")
+    assert lang == "en-us"

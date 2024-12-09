@@ -20,7 +20,7 @@ GameState = StrEnum("GameState", ["Loading", "Running", "Quitting"])
 
 
 class Game:
-    screen = pygame.display.set_mode((800, 600), RESIZABLE)
+    screen = pygame.display.set_mode((800, 600), FULLSCREEN)
     manager = SceneManager()
 
     def __init__(self, debug=False):
@@ -41,7 +41,7 @@ class Game:
         self.handle_input()
         self.update()
         self.draw()
-        self.clock.tick(self.settings.Graphics.fps)
+        self.clock.tick(self.settings.graphics.fps)
 
     def handle_input(self):
         filtered_events = []

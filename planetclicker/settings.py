@@ -2,10 +2,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from numbers import Number
-from types import NoneType, SimpleNamespace
-from typing import List, Optional, Self, Union
+from types import NoneType, SimpleNamespace, UnionType
+from typing import Dict, List, Optional, Self, Union
 
 from planetclicker.util import singleton
+
+
+@dataclass
+class Setting:
+    name: str
+
 
 SettingValue = (
     int
@@ -19,65 +25,61 @@ SettingValue = (
 
 
 @dataclass
-class Setting:
-    name: str
+class SettingOption(Setting):
     value: SettingValue
     options: list[SettingValue]
 
 
-class SettingGroup:
-    """Is this even necessary?"""
-
-    def __init__(self, *settings: Setting):
-        self.settings = settings
-
-    def __getattr__(self, name: str) -> SettingValue:
-        for setting in self.settings:
-            if setting.name == name:
-                return setting.value
-        raise AttributeError(f"No setting found with name '{name}'")
-
-
-@singleton
 @dataclass
-class Settings:
-    UI = SettingGroup(
-        Setting(
-            "language",
-            "en-us",
-            ["en-us"],
-        )
-    )
-    Graphics = SettingGroup(
-        Setting(
-            name="fps",
-            value=30,
-            options=[30, 60],
-        ),
-        Setting(
-            name="dpi",
-            value=72,
-            options=[72],
-        ),
-        Setting(
-            name="fullscreen",
-            value=False,
-            options=[True, False],
-        ),
-        Setting(
-            name="resolution",
-            value=(800, 600),
-            options=[
-                (640, 480),
-                (1280, 720),
-                (1920, 1080),
-                (2560, 1440),
-                (3840, 2160),
+class SettingOptionBool(SettingOption):
+    options = [True, False]
+
+
+@dataclass
+class SettingGroup(Setting):
+    children: list[Setting]
+
+    def get(self, name):
+        for child in self.children:
+            if child.name.lower() == name:
+                match child:
+                    case SettingOption():
+                        return child.value
+                    case SettingGroup():
+                        return child
+        raise ValueError(f"Not found: {name}")
+
+    def gets(self, *names):
+        s = self.get(names[0])
+        if isinstance(s, SettingGroup):
+            for n in names[1:]:
+                s = s.get(n)
+        return s
+
+
+settings = SettingGroup(
+    "root",
+    [
+        SettingGroup(
+            "ui",
+            [
+                SettingOption("lang", "en-us", ["en-us", "fr-fr"]),
+                SettingOption("theme", "dark", ["dark", "light"]),
+                SettingOption(
+                    "font", "pixelated_elegance", ["jersey25", "pixelated_elegance"]
+                ),
+                SettingOption("show_keys", True, [True, False]),
+                SettingOption("show_fps", True, [True, False]),
             ],
         ),
-        Setting(
-            "quality",
-            value="high",
-            options=["low", "high"],
+        SettingGroup(
+            "graphics",
+            [
+                SettingOption("fps", 30, [30, 60]),
+                SettingOption("dpi", 72, [72, 300]),
+                SettingOption("fullscreen", True, [True, False]),
+                SettingOption("resolution", (1600, 900), [(1600, 900), (800, 600)]),
+            ],
         ),
-    )
+    ],
+)

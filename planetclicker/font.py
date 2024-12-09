@@ -1,21 +1,15 @@
 from __future__ import annotations
 
 import os
+from dataclasses import dataclass
+import os
 from enum import Enum, StrEnum
+from types import SimpleNamespace
 
 import pygame
 from pygame.surface import Surface
 
 from planetclicker.color import Colors
-
-
-class FontEnum(StrEnum):
-    jersey25 = "Jersey25-Regular"
-    pixelated_elegance = "PixelatedElegance"
-    pixelify_sans = "PixelifySans-Regular"
-    roboto = "RobotoMono-Regular"
-    space_quest = "SpaceQuest"
-    thaleah_fat = "ThaleahFat"
 
 
 class Font(pygame.font.Font):
