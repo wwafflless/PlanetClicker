@@ -1,6 +1,9 @@
 from planetclicker.scene import Scene
 
 
+from planetclicker import DEBUG
+
+
 class SingletonClass:
     def __new__(cls, *args):
         if not hasattr(cls, "instance"):

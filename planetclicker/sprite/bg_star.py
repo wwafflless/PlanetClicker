@@ -1,8 +1,7 @@
 import random
 
+from planetclicker.color import Colors
 import pygame
-
-from planetclicker import color
 
 
 class BGStar:
@@ -19,7 +18,7 @@ class BGStar:
         self.y += self.dy / 10
 
     def draw(self, window):
-        self.surface.fill(color.text)
+        self.surface.fill(Colors.text)
         window.blit(self.surface, (self.x, self.y))
 
 

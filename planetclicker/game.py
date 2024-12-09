@@ -1,6 +1,7 @@
 from enum import Enum, StrEnum
+from planetclicker.color import Colors
 from types import SimpleNamespace
-from planetclicker import color
+from planetclicker import DEBUG, color
 
 import pygame
 
@@ -29,16 +30,22 @@ class Game:
         self.manager.push(TitleScene())
         self.clock = Clock()
         self.settings = Settings()
+        self.state = GameState.Running
 
     def run(self):
-        self.state = GameState.Running
+        if DEBUG:
+            print("Running", self.state)
         while self.state == GameState.Running:
-            self.handle_input()
-            self.update()
-            self.draw()
+            self.run_loop()
+
+    def run_loop(self):
+        if DEBUG:
+            print(self.state)
+        self.handle_input()
+        self.update()
+        self.draw()
 
     def handle_input(self):
-        filtered_events = []
         pressed_keys = pygame.key.get_pressed()
         keybinds = {
             K_ESCAPE: QuitGame(),
@@ -51,13 +58,13 @@ class Game:
                 if key in keybinds:
                     keybinds[key].execute()
 
-        self.manager.handle_input(filtered_events, pressed_keys)
+        self.manager.handle_input(pressed_keys)
 
     def update(self):
         self.manager.update()
         # delta = self.clock.tick(self.settings.graphics.fps) / 1000
 
     def draw(self):
-        self.screen.fill(color.background)
+        self.screen.fill(Colors.background)
         self.manager.render(self.screen)
         pygame.display.flip()

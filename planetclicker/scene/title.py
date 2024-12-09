@@ -1,6 +1,6 @@
 import pygame
 
-from planetclicker import color
+from planetclicker import Colors
 from planetclicker.scene.manager import SceneManager
 from planetclicker.sprite.bg_star import BGStarSystem
 from planetclicker.scene.scene import Scene
@@ -27,12 +27,12 @@ class TitleScene(Scene):
         self.title_text = TitleFont.render(
             text="Planet Clicker",
             antialias=False,
-            color=color.brand,
+            color=Colors.brand,
         )
         self.instruction_text = TextFont.render(
             "press ENTER to start",
             False,
-            color.brand,
+            Colors.brand,
         )
 
         button_texts = ["continue", "new game", "load game", "settings"]
