@@ -1,9 +1,12 @@
 from __future__ import annotations
-from enum import Enum, StrEnum
-from planetclicker.color import Colors
-from pygame.surface import Surface
-import pygame
+
 import os
+from enum import Enum, StrEnum
+
+import pygame
+from pygame.surface import Surface
+
+from planetclicker.color import Colors
 
 
 class FontEnum(StrEnum):

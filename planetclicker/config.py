@@ -1,3 +1,2 @@
-timezone = 'pst'
-language = 'en-us'
-
+timezone = "pst"
+language = "en-us"

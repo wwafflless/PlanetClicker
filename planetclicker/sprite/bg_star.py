@@ -1,7 +1,8 @@
 import random
 
-from planetclicker.color import Colors
 import pygame
+
+from planetclicker.color import Colors
 
 
 class BGStar:

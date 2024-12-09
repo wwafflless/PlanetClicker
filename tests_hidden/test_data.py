@@ -1,8 +1,9 @@
 import pygame
 
 pygame.init()
-from src.data import Dev, Game
 import pprint
+
+from src.data import Dev, Game
 
 
 def test_color():

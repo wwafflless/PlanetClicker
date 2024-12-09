@@ -1,7 +1,6 @@
-from planetclicker.model.planet import Planet
-
-
 from dataclasses import dataclass
+
+from planetclicker.model.planet import Planet
 
 
 @dataclass

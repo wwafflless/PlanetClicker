@@ -4,10 +4,11 @@ from dataclasses import dataclass, field
 from typing import List, Optional
 
 import pygame
-from planetclicker import Colors, color
-from planetclicker.model import BlankSprite
 from pygame.sprite import Group, Sprite
 from pygame.surface import Surface
+
+from planetclicker import Colors, color
+from planetclicker.model import BlankSprite
 
 
 @dataclass

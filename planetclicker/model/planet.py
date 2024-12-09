@@ -5,9 +5,10 @@ from enum import StrEnum
 from typing import Tuple
 
 import numpy as np
+from pygame import Surface
+
 from planetclicker.math.rotate import rotate_x, rotate_y, rotate_z
 from planetclicker.sprite.animated_sprite import AnimatedSprite
-from pygame import Surface
 
 
 @dataclass

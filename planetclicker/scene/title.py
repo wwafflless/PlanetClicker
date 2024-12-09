@@ -1,13 +1,13 @@
 import pygame
 
-from planetclicker import Colors
 from planetclicker.scene.manager import SceneManager
-from planetclicker.sprite.bg_star import BGStarSystem
-from planetclicker.scene.scene import Scene
+from planetclicker import Colors
+from planetclicker.font import TextFont, TitleFont
 from planetclicker.scene.main import MainScene
+from planetclicker.scene.scene import Scene
 from planetclicker.scene.settings import SettingsScene
+from planetclicker.sprite.bg_star import BGStarSystem
 from planetclicker.ui.button import UIButton
-from planetclicker.font import TitleFont, TextFont
 
 
 class TitleScene(Scene):
@@ -68,7 +68,7 @@ class TitleScene(Scene):
             SettingsScene,
         ]
 
-        SceneManager().push(destinations[self.selected_button_index]())
+        SceneManager().push(destinations[self.selected_button_index]())  # TODO
 
     def handle_input(self, events, pressed_keys):
         for b in self.buttons:

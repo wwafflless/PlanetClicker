@@ -1,8 +1,9 @@
 from __future__ import annotations
+
+from dataclasses import dataclass
 from numbers import Number
 from types import NoneType, SimpleNamespace
 from typing import List, Optional, Self, Union
-from dataclasses import dataclass
 
 from planetclicker.util import singleton
 

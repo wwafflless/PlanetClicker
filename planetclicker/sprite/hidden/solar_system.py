@@ -1,6 +1,7 @@
 from pygame.surface import Surface
-from planetclicker.sprite.bg_star import BGStarSystem
+
 from planetclicker.model.planet import Planet
+from planetclicker.sprite.bg_star import BGStarSystem
 
 
 class SolarSystem:

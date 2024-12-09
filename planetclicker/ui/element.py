@@ -1,7 +1,7 @@
 import pygame
 
-from planetclicker.settings import Settings
 from planetclicker.font import TextFont
+from planetclicker.settings import Settings
 
 
 class UIElement:

@@ -1,9 +1,9 @@
 import pygame
 
 pygame.init()
-from src.data import Game, Dev
-
 import json
+
+from src.data import Dev, Game
 
 
 def test_planets_loader():

@@ -1,6 +1,5 @@
 import pygame
 
-
 TESTEVENT = pygame.event.custom_type()
 
 

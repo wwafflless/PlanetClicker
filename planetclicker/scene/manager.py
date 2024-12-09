@@ -1,7 +1,6 @@
 from pygame import Surface
-from planetclicker.scene import Scene
 
-
+from planetclicker.scene.scene import Scene
 from planetclicker.util import singleton
 
 

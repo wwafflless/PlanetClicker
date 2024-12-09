@@ -4,10 +4,11 @@ from planetclicker import color
 
 pygame.init()
 import pytest
+from pygame.sprite import Sprite
+
 from planetclicker.data import Game
 from planetclicker.sprite.animated_sprite import AnimatedSprite
 from planetclicker.sprite.sprite_sheet import SpriteSheet
-from pygame.sprite import Sprite
 
 
 @pytest.mark.skip

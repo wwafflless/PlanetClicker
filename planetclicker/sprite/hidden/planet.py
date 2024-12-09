@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-
 import numpy as np
 import pygame
+from pygame.sprite import Sprite
+
 from planetclicker.data import Game
 from planetclicker.math import rotate_x, rotate_z
-from pygame.sprite import Sprite
 
 
 class PlanetSprite(pygame.sprite.Sprite):

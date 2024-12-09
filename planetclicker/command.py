@@ -1,8 +1,9 @@
-import pygame
 from abc import ABC, abstractmethod
 
-from planetclicker.scene.manager import SceneManager
-from planetclicker.scene.scene import Scene
+import pygame
+
+# from planetclicker.scene.manager import SceneManager
+# from planetclicker.scene.scene import Scene
 
 
 class Command(ABC):

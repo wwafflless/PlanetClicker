@@ -1,8 +1,9 @@
 import pygame
+
 from planetclicker import Colors
 from planetclicker.font import TextFont
+from planetclicker.model.solar_system import Planet, SolarSystem, Sun
 from planetclicker.scene.scene import Scene
-from planetclicker.model.solar_system import SolarSystem, Sun, Planet
 from planetclicker.sprite.animated_sprite import AnimatedSprite
 
 
