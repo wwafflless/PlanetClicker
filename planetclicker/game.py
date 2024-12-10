@@ -1,6 +1,5 @@
-from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum, StrEnum
+from enum import StrEnum
 
 import pygame
 
@@ -8,13 +7,12 @@ pygame.init()
 from pygame.locals import *
 from pygame.time import Clock
 
-from planetclicker import color
 from planetclicker.color import Colors
-from planetclicker.command import Command, QuitGame, ToggleDebug
-from planetclicker.font import DebugFont, TextFont, TitleFont
+from planetclicker.command import QuitGame, ToggleDebug
+from planetclicker.font import DebugFont
 from planetclicker.scene.manager import SceneManager
 from planetclicker.scene.title import TitleScene
-from planetclicker.settings import Setting, SettingGroup, default_settings
+from planetclicker.settings import default_settings
 
 GameState = StrEnum("GameState", ["Loading", "Running", "Quitting"])
 

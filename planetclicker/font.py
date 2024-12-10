@@ -1,10 +1,7 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
-import os
-from enum import Enum, StrEnum
-from types import SimpleNamespace
+from enum import StrEnum
 
 import pygame
 from pygame.surface import Surface
@@ -40,7 +37,7 @@ class FontEnum(StrEnum):
 
 TitleFont = Font(
     font_name=FontEnum.thaleah_fat.value,
-    font_size=128,
+    font_size=64,
 )
 TextFont = Font(
     FontEnum.pixelated_elegance,

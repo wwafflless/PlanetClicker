@@ -1,11 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from numbers import Number
-from types import NoneType, SimpleNamespace, UnionType
-from typing import Dict, List, Optional, Self, Union
-
-from planetclicker.util import singleton
+from types import NoneType
 
 
 @dataclass

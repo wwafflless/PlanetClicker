@@ -1,3 +1,4 @@
+from pygame import Surface
 from planetclicker import Colors
 from planetclicker.font import TextFont
 from planetclicker.scene.scene import Scene
@@ -6,10 +7,6 @@ from planetclicker.scene.scene import Scene
 class SettingsScene(Scene):
     """
     The settings screen
-    TODO
-    - Volume
-    - Controls
-    - Back
     """
 
     def __init__(self):
@@ -61,9 +58,9 @@ class SettingsScene(Scene):
     def update(self):
         pass
 
-    def render(self, screen):
-        screen.fill((0, 0, 0))
-        screen.blit(self.back_text, (100, 50))
-        screen.blit(self.title_text, (100, 100))
+    def render(self, surface: Surface):
+        surface.fill((0, 0, 0))
+        surface.blit(self.back_text, (100, 50))
+        surface.blit(self.title_text, (100, 100))
         for option, (x, y) in self.options:
-            screen.blit(option, (x, y))
+            surface.blit(option, (x, y))
