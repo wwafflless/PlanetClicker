@@ -32,6 +32,7 @@
             uv
             poetry
             python3Packages.pygame
+            python3Packages.pygame-gui
             #
 
           ];
