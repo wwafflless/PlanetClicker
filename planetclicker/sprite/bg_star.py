@@ -13,9 +13,8 @@ class BGStar:
         self.y = y
         self.z = np.random.uniform(0.0, 10.0)
         self.r = 0.5 / self.z
-        # self.r = np.random.geometric(0.618)
         self.t = np.random.uniform(0.0001, 2.0 * np.pi)
-        self.dt = np.random.uniform(-0.01, 0.01)
+        self.dt = np.random.uniform(0.01, 2.0)
         self.dx = self.r * np.cos(self.t)
         self.dy = self.r * np.sin(self.t)
         self.dz = self.r * np.cos(self.t)
@@ -23,8 +22,8 @@ class BGStar:
 
     def update(self):
         self.t += self.dt
-        self.dx = self.r * np.cos(self.t)
-        self.dy = self.r * np.sin(self.t)
+        self.dx = self.r * np.cos(self.dt)
+        self.dy = self.r * np.sin(self.dt)
         # self.dz = np.sin(self.t / 2.0)
         self.x += self.dx / 1
         self.y += self.dy / 1
@@ -35,17 +34,9 @@ class BGStar:
             surface,
             color=Colors.accent,
             center=(self.x, self.y),
-            radius=0.5 + 1.0 / self.z,
-            # radius=1 / (np.square(self.z)),
+            radius=self.r,
         )
         self.surface.set_alpha(int(10.0 + self.z))
-        print("z", 20.0 / self.z)
-        # surface.blit(
-        #     self.surface,
-        #     (self.x, self.y),
-        # )
-        # self.surface.fill(Colors.brand)
-        # window.blit(self.surface, (self.x, self.y, 5, 5))
 
 
 class BGStarSystem:

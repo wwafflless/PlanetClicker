@@ -82,7 +82,7 @@ def default_settings():
                 [
                     SettingOption("fps", 30, [30, 60]),
                     SettingOption("dpi", 72, [72, 300]),
-                    SettingOption.Bool("fullscreen", True),
+                    SettingOption.Bool("fullscreen", False),
                     SettingOption("resolution", (1600, 900), [(1600, 900), (800, 600)]),
                 ],
             ),

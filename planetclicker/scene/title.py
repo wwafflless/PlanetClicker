@@ -37,19 +37,19 @@ class TitleScene(Scene):
             "settings",
         ]
 
-        self.buttons = []
+        self.buttons: list[UIButton] = []
         self.selected_button_index = 0
         for i in range(len(button_texts)):
             new_button = UIButton(
-                (400 - (75 / 2), 250 + (i * 30)),
-                (75, 25),
-                (255, 255, 255, 255),
+                (400 - (75 / 2), 450 + (i * 30)),
+                (125, 25),
+                (255, 255, 255, 100),
                 button_texts[i],
                 True,
                 (43, 127, 148, 255),
-                (0, 0, 0, 0),
-                (0, 0, 0, 0),
-                True,
+                # (0, 0, 0, 0),
+                # (0, 0, 0, 0),
+                # True,
             )
             new_button.link(2, self.click_button)
             self.buttons.append(new_button)
@@ -59,6 +59,7 @@ class TitleScene(Scene):
         for i, button in enumerate(self.buttons):
             if button == self.buttons[i]:
                 self.selected_button_index = i
+                button.selected = True
                 break
 
         destinations = [
@@ -71,8 +72,6 @@ class TitleScene(Scene):
         SceneManager().push(destinations[self.selected_button_index]())  # TODO
 
     def handle_input(self, events, pressed_keys):
-        for b in self.buttons:
-            b.handle_input(events, pressed_keys)
 
         for event in events:
             if event.type == pygame.KEYDOWN:
@@ -81,23 +80,25 @@ class TitleScene(Scene):
                     self.click_button(self.selected_button, event)
                     break
 
-            # match (event.type):
-            #     case pygame.KEYDOWN:
-            #         match event.key:
-            #             case pygame.K_UP:
-            #                 print("pressed up")
-            #                 self.selected_button_index -= 1
-            #                 self.selected_button_index %= len(self.buttons)
-            #                 break
-            #             case pygame.K_DOWN:
-            #                 self.selected_button_index += 1
-            #                 self.selected_button_index %= len(self.buttons)
-            #                 self.buttons[self.selected_button_index]
-            #                 break
+                elif event.key == pygame.K_DOWN:
+                    self.select_button(1)
+                    break
+                elif event.key == pygame.K_UP:
+                    self.select_button(-1)
+                    break
+        for b in self.buttons:
+            b.handle_input(events, pressed_keys)
 
     @property
     def selected_button(self):
         return self.buttons[self.selected_button_index]
+
+    def select_button(self, dir):
+        for button in self.buttons:
+            button.selected = False
+        self.selected_button_index += dir + len(self.buttons)
+        self.selected_button_index %= len(self.buttons)
+        self.buttons[self.selected_button_index].selected = True
 
     def update(self):
         self.particles.update()
@@ -107,24 +108,14 @@ class TitleScene(Scene):
     def render(self, surface: pygame.Surface):
         surface.fill(Colors.background)
         self.particles.draw(surface)
-        title_rect = self.title_text.get_rect()
+        rect = surface.get_rect()
         surface.blit(
             self.title_text,
             (
-                self.rect.centerx - title_rect.centerx,
-                self.rect.height // 3 - title_rect.centery,
+                rect.centerx - self.title_text.get_rect().centerx,
+                rect.height // 3,
             ),
         )
         for b in self.buttons:
+            b.pos = (rect.centerx, b.pos[1])
             b.draw(surface)
-        """
-        for i, button in enumerate(self.buttons):
-            color = Color.accent if button == self.selected_button else Color.text
-            screen.blit(
-                text_font.render(button.text, False, color),
-                (
-                    self.rect.centerx - text_font.size(button.text)[0] // 2,
-                    self.rect.height // 2 + i * 20,
-                ),
-            )
-            """

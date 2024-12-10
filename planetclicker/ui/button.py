@@ -91,23 +91,19 @@ class UIButton(UIElement):
         if not self.interactable:
             return
         for event in events:
-            match (event.type):
-                case pygame.MOUSEMOTION:
-                    if self.hovered:
-                        if self.does_collide(event.pos):
-                            self.on_mouse_entered(event)
-                            self.hovered = True
-                    else:
-                        self.on_mouse_exited(event)
-                        self.hovered = False
+            if event.type == pygame.MOUSEMOTION:
+                if self.does_collide(event.pos):
+                    self.on_mouse_entered(event)
+                    self.hovered = True
+                else:
+                    self.on_mouse_exited(event)
+                    self.hovered = False
                     break
-                case pygame.MOUSEBUTTONDOWN:
-                    if self.does_collide(event.pos):
-                        self.on_mouse_down(event)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if self.does_collide(event.pos):
+                    self.on_mouse_down(event)
+                    self.selected = True
                     break
-                case pygame.MOUSEBUTTONUP:
-                    if self.does_collide(event.pos):
-                        self.on_mouse_up(event)
 
     #   returns true if the point is within this button (whole screen coords)
     def does_collide(self, to_check) -> bool:

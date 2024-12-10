@@ -40,7 +40,7 @@ class FontEnum(StrEnum):
 
 TitleFont = Font(
     font_name=FontEnum.thaleah_fat.value,
-    font_size=64,
+    font_size=128,
 )
 TextFont = Font(
     FontEnum.pixelated_elegance,
@@ -48,5 +48,5 @@ TextFont = Font(
 )
 DebugFont = Font(
     FontEnum.roboto,
-    12,
+    16,
 )

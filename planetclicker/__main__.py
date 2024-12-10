@@ -8,7 +8,7 @@ from planetclicker.game import Game
 
 
 def main():
-    game = Game(debug=True)
+    game = Game(debug=False)
     game.run()
 
 
