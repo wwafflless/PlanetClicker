@@ -9,14 +9,14 @@
     let
       inherit (nixpkgs) lib;
 
-      project = pyproject-nix.lib.project.loadPoetryPyproject {
+      project = pyproject-nix.lib.project.loadPyproject {
         projectRoot = ./.;
       };
 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
-      python = pkgs.python311;
+      python = pkgs.python312;
 
     in
     {
@@ -31,8 +31,10 @@
             #
             uv
             poetry
-            python3Packages.pygame
-            python3Packages.pygame-gui
+            python312Packages.pygame
+            python312Packages.matplotlib
+            python312Packages.noise
+            # python312Packages.pygame-gui
             #
 
           ];

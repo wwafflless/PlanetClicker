@@ -5,6 +5,7 @@ from planetclicker import Colors
 from planetclicker.font import TextFont, TitleFont
 from planetclicker.scene.main import MainScene
 from planetclicker.scene.scene import Scene
+from planetclicker.scene.generate import GenerateScene
 from planetclicker.scene.settings import SettingsScene
 from planetclicker.sprite.bg_star import BGStarSystem
 from planetclicker.ui.button import UIButton
@@ -33,7 +34,7 @@ class TitleScene(Scene):
         button_texts = [
             # "continue",
             "new game",
-            # "load game",
+            "generate",
             "settings",
         ]
 
@@ -65,11 +66,11 @@ class TitleScene(Scene):
         destinations = [
             # MainScene,
             MainScene,
-            # MainScene,
+            GenerateScene,
             SettingsScene,
         ]
 
-        SceneManager().push(destinations[self.selected_button_index]())  # TODO
+        SceneManager().push(destinations[self.selected_button_index]())
 
     def handle_input(self, events, pressed_keys):
 

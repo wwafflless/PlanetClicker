@@ -3,6 +3,8 @@ from enum import StrEnum
 
 import pygame
 
+from planetclicker.scene.generate import GenerateScene
+
 pygame.init()
 from pygame.locals import *
 from pygame.time import Clock
@@ -25,7 +27,8 @@ class Game:
         pygame.display.set_caption("Planet Clicker")
         self.debug = debug
         self.state = GameState.Loading
-        self.manager.push(TitleScene())
+        self.manager.push(GenerateScene())
+        # self.manager.push(TitleScene())
         self.clock = Clock()
         self.settings = default_settings()
         self.state = GameState.Running
