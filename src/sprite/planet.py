@@ -25,6 +25,7 @@ class PlanetSprite(pygame.sprite.Sprite):
         self.enabled = False
 
         self.value = 0
+        self.cost = -1
         self.on_orbit = NULL
 
     def update(self):

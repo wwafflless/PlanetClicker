@@ -1,3 +1,4 @@
+from genericpath import samefile
 import pygame
 
 from src.asset.font import text_font
@@ -17,6 +18,8 @@ class UIElement():
 
         self.test_text = text_font.render(label, False, text_color)
         self.test_text.set_alpha(text_color[3])
+        
+        self.draw_offset = (0, 0)
     
     def move(self, to_move):
         self.pos = (self.pos[0] + to_move[0], self.pos[1] + to_move[1])
@@ -33,7 +36,7 @@ class UIElement():
         subsurface.set_alpha(self.color[3])
         subsurface.fill(self.color)
         
-        surface.blit(subsurface, self.pos)
+        surface.blit(subsurface, (self.pos[0] + self.draw_offset[0], self.pos[1] + self.draw_offset[1]))
         
         #   rerender in case label or text color change
         self.test_text = text_font.render(self.label, False, self.text_color)
@@ -44,4 +47,4 @@ class UIElement():
         #   always center text
         text_pos = (self.pos[0] + ((self.width_height[0] - text_width) / 2), self.pos[1] + ((self.width_height[1] - text_height) / 2))
         
-        surface.blit(self.test_text, text_pos)
+        surface.blit(self.test_text, (text_pos[0] + self.draw_offset[0], text_pos[1] + self.draw_offset[1]))

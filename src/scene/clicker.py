@@ -34,6 +34,9 @@ class ClickerScene(Scene):
             self.planets.append(new_planet)
         self.solar_system = SolarSystem([self.planets[0]])
         
+        for i in range(1, len(self.planets)):
+            self.planets[i].cost = pow(10, i-1)  # <-- ideally this is inside the previous loop, but I don't know how to edit it sorry!
+        
         self.tab_buttons = []
         
         self.clicker_panel = Panel((0, 400), (800, 200), ui_bg_color)
@@ -42,7 +45,7 @@ class ClickerScene(Scene):
             if i == 0:
                 label = "planets"
             next_button = UIButton((self.clicker_panel.pos[0] + (i * 200), self.clicker_panel.pos[1]), (200, 25), ui_unselected_color, label, (i==0), ui_highlight_color, (0, 0, 0, 0), ui_unselected_color)
-            next_button.link(2, self.tab_button_click)   # <-- ideally this 2 is an enum, I don't know how to best go about that in python sorry
+            next_button.link(2, self.tab_button_click)   # <-- ideally this 2 is an enum, but I don't know how to best go about that in python sorry!
             self.clicker_panel.add_child(next_button)
             self.tab_buttons.append(next_button)
         self.tab_buttons[0].selected = True
@@ -59,15 +62,21 @@ class ClickerScene(Scene):
         for i in range(5):
             label_color = (134, 134, 134, 255)
             if i==0: label_color = (255, 255, 255, 255)
-            planet_label = UIElement((self.tab_panels[0].pos[0] + 125, self.tab_panels[0].pos[1] + (75 * i) + 15), (100, 50), (0,0,0,0), "level: 0", (134, 134, 134, 255))
+            planet_label = UIElement((self.tab_panels[0].pos[0] + 125, self.tab_panels[0].pos[1] + (75 * i) + 15), (100, 50), (0,0,0,0), "level: 0\ncost: 0", (134, 134, 134, 255))
             self.planet_labels.append(planet_label)            
 
-            #   i don't know how to use the data file, this is my workaround sorry!
-            planet_names = ["moon", "mercury", "venus", "earth", "mars", "jupiter", "saturn"]
-            
-            planet_button = UIButton((self.tab_panels[0].pos[0] + 25, self.tab_panels[0].pos[1] + (75 * i) + 15), (100, 50), (255, 255, 255, 255), planet_names[i], True, (220, 255, 255, 255))
+            planet_names = ["moon", "mercury", "venus", "earth", "mars", "jupiter", "saturn"]   # <-- ideally this is from the data file, but I don't know how to use it sorry!
+                
+            planet_button_pos = (self.tab_panels[0].pos[0] + 25, self.tab_panels[0].pos[1] + (75 * i) + 15)
+            planet_button_size = (100, 50)
+
+            self.tab_panels[0].add_child(UIElement((planet_button_pos[0] - 2, planet_button_pos[1] + 2), planet_button_size, (134, 134, 134, 255)))
+
+            planet_button = UIButton(planet_button_pos, planet_button_size, (255, 255, 255, 255), planet_names[i], True, (220, 255, 255, 255), (220, 255, 255, 255), (134, 134, 134, 255))
             planet_button.text_color = (0, 0, 0, 255)
-            planet_button.link(2, self.planet_button_click)
+            planet_button.link(1, self.planet_button_exit)
+            planet_button.link(2, self.planet_button_down)
+            planet_button.link(3, self.planet_button_up)
             self.planet_buttons.append(planet_button)
             
             self.tab_panels[0].add_child(planet_button)
@@ -79,7 +88,8 @@ class ClickerScene(Scene):
         self.years = 0
         self.year_label = UIElement((0, 10), (100, 25), (0,0,0,0), "years: " + str(self.years))
         
-        self.planet_button_click(self.planet_buttons[0], None)
+        self.planet_button_down(self.planet_buttons[0], None)
+        self.planet_button_up(self.planet_buttons[0], None)
     
     #   makes them mutually exclusive
     def tab_button_click(self, button, event):
@@ -93,8 +103,17 @@ class ClickerScene(Scene):
             button.selected = True
             
             self.current_tab = self.tab_panels[clicked_index]
+            
+    def planet_button_exit(self, button, event):
+        button.selected = False
+    def planet_button_down(self, button, event):
+        button.selected = True
+    def planet_button_up(self, button, event):
+        if(button.selected):
+            button.selected = False
+        else:
+            return
 
-    def planet_button_click(self, button, event):
         for i in range(len(self.planet_buttons)):
             if self.planet_buttons[i] == button:
                 clicked_index = i
@@ -106,8 +125,13 @@ class ClickerScene(Scene):
                 planet.enabled = True
                 planet.value = 1
                 self.solar_system.add_planet(self.planets[clicked_index + 1])
+                
+                if(clicked_index + 1 == 4):
+                    self.tab_buttons[1].enable()
+                    self.tab_buttons[1].label = "star"
         else:
             planet.value += 1
+            self.years -= planet.cost
 
     def on_planet_orbit(self, planet, value):
         self.years += value
@@ -118,7 +142,19 @@ class ClickerScene(Scene):
 
     def update(self):
         for i in range(len(self.planet_labels)):
-            self.planet_labels[i].label = "level: " + str(self.planets[i+1].value)
+            if self.planet_buttons[i].interactable:
+                if self.years < self.planets[i+1].cost:
+                    self.planet_buttons[i].disable()
+            else:
+                if self.years >= self.planets[i+1].cost:
+                    self.planet_buttons[i].enable()
+                
+            if self.planet_buttons[i].selected or not self.planet_buttons[i].interactable:
+                self.planet_buttons[i].draw_offset = (-2, 2)
+            else:
+                self.planet_buttons[i].draw_offset = (0, 0)
+                
+            self.planet_labels[i].label = "level: " + str(self.planets[i+1].value) + "\ncost: " + str(self.planets[i+1].cost)
 
         self.current_tab.update()
         self.clicker_panel.update()

@@ -38,32 +38,32 @@
     color = "orange"
     radius = 3
     orbit_radius = 100
-    speed = 1
+    speed = 3
 [planet.venus]
     color = "green"
     radius = 4
     orbit_radius = 120
-    speed = 3
+    speed = 1.8
 [planet.earth]
     color = "brown"
     radius = 5
     orbit_radius = 130
-    speed = 5
+    speed = 1.08
 [planet.mars]
     color = "red"
     radius = 6
     orbit_radius = 150
-    speed = 1
+    speed = 0.648
 [planet.jupiter]
     color = "blue"
     radius = 9
     orbit_radius = 180
-    speed = 0.8
+    speed = 0.3888
 [planet.saturn]
     color = "black"
     radius = 10
     orbit_radius = 200
-    speed = 0.5
+    speed = 0.23328
 # [planet.uranus]
 #     color = "violet"
 # [planet.neptune]
