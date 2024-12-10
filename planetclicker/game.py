@@ -14,13 +14,13 @@ from planetclicker.command import Command, QuitGame, ToggleDebug
 from planetclicker.font import DebugFont, TextFont, TitleFont
 from planetclicker.scene.manager import SceneManager
 from planetclicker.scene.title import TitleScene
-from planetclicker.settings import Setting, SettingGroup, Settings
+from planetclicker.settings import Setting, SettingGroup, default_settings
 
 GameState = StrEnum("GameState", ["Loading", "Running", "Quitting"])
 
 
 class Game:
-    screen = pygame.display.set_mode((800, 600), FULLSCREEN)
+    # screen = pygame.display.set_mode((800, 600), FULLSCREEN)
     manager = SceneManager()
 
     def __init__(self, debug=False):
@@ -29,9 +29,17 @@ class Game:
         self.state = GameState.Loading
         self.manager.push(TitleScene())
         self.clock = Clock()
-        self.settings = Settings()
+        self.settings = default_settings()
         self.state = GameState.Running
         self.show_keys = True
+        self.screen = pygame.display.set_mode(
+            self.settings.gets("graphics", "resolution"),
+            (
+                FULLSCREEN
+                if self.settings.gets("graphics", "fullscreen")
+                else WINDOWMAXIMIZED
+            ),
+        )
 
     def run(self):
         while self.state == GameState.Running:
@@ -41,7 +49,7 @@ class Game:
         self.handle_input()
         self.update()
         self.draw()
-        self.clock.tick(self.settings.graphics.fps)
+        self.clock.tick(self.settings.gets("graphics", "fps"))
 
     def handle_input(self):
         filtered_events = []

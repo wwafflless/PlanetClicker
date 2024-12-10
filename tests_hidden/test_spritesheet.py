@@ -15,7 +15,7 @@ from planetclicker.sprite.sprite_sheet import SpriteSheet
 def test_sheet():
     pygame.init()
     screen = pygame.display.set_mode((400, 300))
-    sprite_sheet = SpriteSheet("asset/sheet/orb_2.png")
+    sprite_sheet = SpriteSheet("assets/sheet/orb_2.png")
     image_0 = sprite_sheet.image_at((0, 0, 51, 51))
     rect = image_0.get_rect()
     image_strip = sprite_sheet.load_strip(rect, 10, (0, 0, 51, 51))
@@ -31,7 +31,7 @@ def test_sheet():
 def test_animated_sprite():
     screen = pygame.display.set_mode((400, 300))
     sprite = AnimatedSprite(
-        name="asset/sheet/orb_2.png",
+        name="assets/sheet/orb_2.png",
         w=51,
         h=51,
         frames=10,
@@ -50,7 +50,7 @@ def test_custom_sprite():
     class CustomSprite(Sprite):
         def __init__(self, *groups: pygame.sprite.Group) -> None:
             super().__init__(*groups)
-            self.image = pygame.image.load("asset/sprite/sun.png")
+            self.image = pygame.image.load("assets/sprite/sun.png")
 
         def update(self) -> None:
             return super().update()

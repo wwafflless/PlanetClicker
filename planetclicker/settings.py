@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from numbers import Number
 from types import NoneType, SimpleNamespace, UnionType
 from typing import Dict, List, Optional, Self, Union
@@ -29,10 +29,14 @@ class SettingOption(Setting):
     value: SettingValue
     options: list[SettingValue]
 
+    @classmethod
+    def Bool(cls, name, default_value):
+        return SettingOption(name=name, value=default_value, options=[True, False])
+
 
 @dataclass
 class SettingOptionBool(SettingOption):
-    options = [True, False]
+    options: list[SettingValue] = field()
 
 
 @dataclass
@@ -57,29 +61,30 @@ class SettingGroup(Setting):
         return s
 
 
-settings = SettingGroup(
-    "root",
-    [
-        SettingGroup(
-            "ui",
-            [
-                SettingOption("lang", "en-us", ["en-us", "fr-fr"]),
-                SettingOption("theme", "dark", ["dark", "light"]),
-                SettingOption(
-                    "font", "pixelated_elegance", ["jersey25", "pixelated_elegance"]
-                ),
-                SettingOption("show_keys", True, [True, False]),
-                SettingOption("show_fps", True, [True, False]),
-            ],
-        ),
-        SettingGroup(
-            "graphics",
-            [
-                SettingOption("fps", 30, [30, 60]),
-                SettingOption("dpi", 72, [72, 300]),
-                SettingOption("fullscreen", True, [True, False]),
-                SettingOption("resolution", (1600, 900), [(1600, 900), (800, 600)]),
-            ],
-        ),
-    ],
-)
+def default_settings():
+    return SettingGroup(
+        "root",
+        [
+            SettingGroup(
+                "ui",
+                [
+                    SettingOption("lang", "en-us", ["en-us"]),
+                    SettingOption("theme", "dark", ["dark", "light"]),
+                    SettingOption(
+                        "font", "pixelated_elegance", ["jersey25", "pixelated_elegance"]
+                    ),
+                    SettingOption.Bool("show_keys", True),
+                    SettingOption.Bool("show_fps", True),
+                ],
+            ),
+            SettingGroup(
+                "graphics",
+                [
+                    SettingOption("fps", 30, [30, 60]),
+                    SettingOption("dpi", 72, [72, 300]),
+                    SettingOption.Bool("fullscreen", True),
+                    SettingOption("resolution", (1600, 900), [(1600, 900), (800, 600)]),
+                ],
+            ),
+        ],
+    )

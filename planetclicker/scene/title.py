@@ -23,7 +23,7 @@ class TitleScene(Scene):
         super().__init__(
             name="title",
         )
-        self.particles = BGStarSystem(n=100)  # background animation
+        self.particles = BGStarSystem(n=500, size=(1600, 900))  # background animation
         self.title_text = TitleFont.render(
             text="Planet Clicker",
             # antialias=False,
